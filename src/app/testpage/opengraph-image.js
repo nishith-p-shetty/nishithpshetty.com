@@ -62,7 +62,7 @@ export default async function Image() {
               justifyContent: "flex-start",
               alignItems: "flex-start",
               flex: 2,
-              margin: "0 0 0 3px",
+              margin: "0 0 0 100px",
               padding: "0 0 0 0",
             }}
           >
