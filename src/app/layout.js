@@ -5,6 +5,10 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({ subsets: ["latin"] });
 
+export const viewport = {
+  themeColor: "black",
+};
+
 export const metadata = {
   metadataBase: new URL("https://www.nishithpshetty.com"),
   title: "Nishith P Shetty",
