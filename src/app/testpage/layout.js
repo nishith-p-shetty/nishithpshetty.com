@@ -1,5 +1,5 @@
 export const metadata = {
-  metadataBase: new URL("https://www.nishithpshetty.com/testpage"),
+  metadataBase: new URL("https://www.nishithpshetty.com/"),
   title: "Test Page",
   description: "A test page site",
   keywords: [
