@@ -22,6 +22,9 @@ export const metadata = {
   authors: [{ name: "Nishith P Shetty", url: "https://nishithpshetty.com" }],
   creator: "Nishith P Shetty",
   publisher: "Nishith P Shetty",
+  openGraph: {
+    url: "https://www.nishithpshetty.com",
+  },
 };
 
 export default function RootLayout({ children }) {
