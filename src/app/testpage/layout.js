@@ -17,6 +17,7 @@ export const metadata = {
   publisher: "Nishith P Shetty",
   openGraph: {
     url: "https://www.nishithpshetty.com",
+    siteName: "Test Page",
   },
 };
 
