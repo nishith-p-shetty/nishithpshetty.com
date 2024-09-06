@@ -23,7 +23,9 @@ export const metadata = {
     "About",
     "Contact",
   ],
-  authors: [{ name: "Nishith P Shetty", url: "https://nishithpshetty.com" }],
+  authors: [
+    { name: "Nishith P Shetty", url: "https://www.nishithpshetty.com" },
+  ],
   creator: "Nishith P Shetty",
   publisher: "Nishith P Shetty",
   openGraph: {
