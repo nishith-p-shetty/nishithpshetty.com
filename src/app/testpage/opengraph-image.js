@@ -29,24 +29,26 @@ export default async function Image() {
           letterSpacing: -2,
           fontWeight: 700,
           textAlign: "center",
-          margin: "0",
-          padding: "0",
+          margin: "auto",
+          padding: "3%",
         }}
       >
-        <div style={{ display: "flex", flexDirection: "row", width: "80%" }}>
+        <div style={{ display: "flex", flexDirection: "row", width: "100%" }}>
           <div
             style={{
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
               flex: 1,
+              margin: "auto",
+              padding: "30px",
             }}
           >
             <img
               style={{
                 border: "10px solid black",
                 borderRadius: "100%",
-                margin: "0",
+                margin: "5px",
                 padding: "0",
               }}
               src="https://www.nishithpshetty.com/android-chrome-512x512.png"
@@ -62,8 +64,8 @@ export default async function Image() {
               justifyContent: "flex-start",
               alignItems: "flex-start",
               flex: 2,
-              margin: "0 0 0 100px",
-              padding: "0 0 0 0",
+              margin: "auto",
+              padding: "5px",
             }}
           >
             <h2
@@ -72,8 +74,8 @@ export default async function Image() {
                 backgroundClip: "text",
                 WebkitBackgroundClip: "text",
                 color: "transparent",
-                margin: "0 0 0 0",
-                padding: "0 0 0 0",
+                margin: "auto",
+                padding: "5px",
               }}
             >
               {metadata.title}
@@ -84,8 +86,8 @@ export default async function Image() {
                 backgroundClip: "text",
                 WebkitBackgroundClip: "text",
                 color: "transparent",
-                margin: "10px 0 0 0",
-                padding: "0 0 0 0",
+                margin: "auto 10%",
+                padding: "5px",
               }}
             >
               {metadata.description}
