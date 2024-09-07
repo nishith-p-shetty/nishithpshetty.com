@@ -25,7 +25,8 @@ export const CoverEdited = ({ children, className }) => {
       );
       setBeamPositions(positions);
     }
-  }, [ref.current]);
+    // }, [ref.current]);
+  }, []);
 
   return (
     <div

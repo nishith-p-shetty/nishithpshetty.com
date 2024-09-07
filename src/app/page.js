@@ -8,5 +8,10 @@ import { FlipWords } from "@/components/ui/flip-words";
 import { WorkRoles } from "@/data/WorkRoles";
 
 export default function Home() {
-  return <main>Hi</main>;
+  return (
+    <main>
+      Hello, I&apos;m <CoverEdited>SHETTY</CoverEdited> aka Nishith P Shetty
+      <FlipWords words={WorkRoles} duration={2000} />
+    </main>
+  );
 }
