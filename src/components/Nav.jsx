@@ -1,12 +1,12 @@
-"use client";
+// "use client";
 
-import { NavLinks } from "@/data/NavLinks";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 import { motion } from "framer-motion";
 
 // data
-import Link from "next/link";
+import { NavLinks } from "@/data/NavLinks";
 
 export const Nav = ({ containerStyles, linkStyles, underlineStyles }) => {
   const currentPathName = usePathname();

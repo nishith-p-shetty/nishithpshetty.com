@@ -5,14 +5,14 @@ import { useTheme } from "next-themes";
 export const Logo = () => {
   const { theme } = useTheme();
   return (
-    <div>
+    <section>
       <Link href="/">
         {theme === "dark" ? (
           <Image
             src="/LogoWhite.png"
             width={54}
             height={54}
-            priority
+            priority={true}
             alt="Logo"
           />
         ) : (
@@ -20,11 +20,11 @@ export const Logo = () => {
             src="/LogoBlack.png"
             width={54}
             height={54}
-            priority
+            priority={true}
             alt="Logo"
           />
         )}
       </Link>
-    </div>
+    </section>
   );
 };
