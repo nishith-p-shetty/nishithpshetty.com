@@ -2,11 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 
-export const Logo = () => {
+export const Logo = ({ onLinkClick }) => {
   const { theme } = useTheme();
   return (
     <section>
-      <Link href="/">
+      <Link href="/" onClick={onLinkClick}>
         {theme === "dark" ? (
           <Image
             src="/LogoWhite.png"

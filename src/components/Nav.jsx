@@ -8,7 +8,12 @@ import { motion } from "framer-motion";
 // data
 import { NavLinks } from "@/data/NavLinks";
 
-export const Nav = ({ containerStyles, linkStyles, underlineStyles }) => {
+export const Nav = ({
+  containerStyles,
+  linkStyles,
+  underlineStyles,
+  onLinkClick,
+}) => {
   const currentPathName = usePathname();
 
   return (
@@ -19,6 +24,7 @@ export const Nav = ({ containerStyles, linkStyles, underlineStyles }) => {
             href={link.path}
             key={index}
             className={`capitalize ${linkStyles}`}
+            onClick={onLinkClick}
           >
             {link.path === currentPathName && (
               <motion.span
