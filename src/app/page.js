@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 // components
 import { CoverEdited } from "@/components/ui/cover-edited";
 import { FlipWords } from "@/components/ui/flip-words";
