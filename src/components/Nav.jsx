@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 import { NavLinks } from "@/data/NavLinks";
 
 // icon
-import { ArrowTopRightIcon } from "@radix-ui/react-icons";
+import { RiArrowRightUpLine } from "react-icons/ri";
 
 export const Nav = ({
   containerStyles,
@@ -32,7 +32,7 @@ export const Nav = ({
             onClick={onLinkClick}
           >
             {link.name}
-            <ArrowTopRightIcon className="flex" />
+            <RiArrowRightUpLine className="flex animate-bounce text-primary dark:text-primary" />
           </Link>
         ) : (
           <Link

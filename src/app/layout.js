@@ -19,7 +19,8 @@ export const viewport = {
 export const metadata = {
   metadataBase: new URL("https://www.nishithpshetty.com"),
   title: "Nishith P Shetty",
-  description: "A personal/portfolio site of Nishith P Shetty",
+  description:
+    "Passionate AI/ML-driven Computer Science student with a knack for Full-Stack Development and a portfolio of impactful projects. Explore my journey through innovation and technology.",
   keywords: [
     "Nishith P Shetty",
     "Portfolio",
