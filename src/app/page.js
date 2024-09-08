@@ -1,15 +1,10 @@
 // components
-import { CoverEdited } from "@/components/ui/cover-edited";
-import { FlipWords } from "@/components/ui/flip-words";
-
-// data
-import { WorkRoles } from "@/data/WorkRoles";
+import { Hero } from "@/components/Hero";
 
 export default function Home() {
   return (
     <main>
-      Hello, I&apos;m <CoverEdited>SHETTY</CoverEdited> aka Nishith P Shetty
-      <FlipWords words={WorkRoles} duration={2000} />
+      <Hero />
     </main>
   );
 }

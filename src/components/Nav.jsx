@@ -8,6 +8,9 @@ import { motion } from "framer-motion";
 // data
 import { NavLinks } from "@/data/NavLinks";
 
+// icon
+import { ArrowTopRightIcon } from "@radix-ui/react-icons";
+
 export const Nav = ({
   containerStyles,
   linkStyles,
@@ -19,7 +22,18 @@ export const Nav = ({
   return (
     <nav className={`${containerStyles}`}>
       {NavLinks.map((link, index) => {
-        return (
+        return link.name === "Resume" ? (
+          <Link
+            href={link.path}
+            target="_blank"
+            key={index}
+            className={`flex capitalize ${linkStyles}`}
+            onClick={onLinkClick}
+          >
+            {link.name}
+            <ArrowTopRightIcon className="flex" />
+          </Link>
+        ) : (
           <Link
             href={link.path}
             key={index}
