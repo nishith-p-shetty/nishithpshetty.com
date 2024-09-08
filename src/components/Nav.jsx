@@ -26,6 +26,7 @@ export const Nav = ({
           <Link
             href={link.path}
             target="_blank"
+            prefetch={false}
             key={index}
             className={`flex capitalize ${linkStyles}`}
             onClick={onLinkClick}
