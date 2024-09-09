@@ -6,7 +6,7 @@ export const Logo = ({ onLinkClick }) => {
   const { theme } = useTheme();
   return (
     <section>
-      <Link href="/" onClick={onLinkClick}>
+      {/* <Link href="/" onClick={onLinkClick}>
         {theme === "dark" ? (
           <Image
             src="/LogoWhite.png"
@@ -24,6 +24,26 @@ export const Logo = ({ onLinkClick }) => {
             alt="Logo"
           />
         )}
+      </Link> */}
+      <Link href="/" onClick={onLinkClick}>
+        <div className="hidden dark:flex">
+          <Image
+            src="/LogoWhite.png"
+            width={54}
+            height={54}
+            priority={true}
+            alt="Logo"
+          />
+        </div>
+        <div className="dark:hidden">
+          <Image
+            src="/LogoBlack.png"
+            width={54}
+            height={54}
+            priority={true}
+            alt="Logo"
+          />
+        </div>
       </Link>
     </section>
   );
