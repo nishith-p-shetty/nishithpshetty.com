@@ -45,7 +45,7 @@ export const MobileNav = () => {
           <div className="flex flex-col items-center gap-y-32">
             <Nav
               containerStyles=" flex flex-col items-center gap-y-6"
-              linkStyles="relative transition-all hover:text-primary"
+              linkStyles="relative transition-all hover:text-primary text-2xl"
               underlineStyles="absolute left-0 top-full h-[2px] w-full bg-primary"
               onLinkClick={handleLinkClick} // Pass the handleLinkClick function to the Nav component
             />

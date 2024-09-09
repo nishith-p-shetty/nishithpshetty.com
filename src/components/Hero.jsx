@@ -56,8 +56,8 @@ export const Hero = ({ discription }) => {
             </div>
             {/* socials */}
             <Socials
-              containerStyles="mx-auto my-auto flex gap-x-6 "
-              iconsStyles="text-[22px] text-foreground transition-all hover:text-primary"
+              containerStyles="mx-auto my-auto flex gap-x-6"
+              iconsStyles="text-[30px] text-foreground transition-all hover:text-primary"
             />
           </div>
           {/* image */}
