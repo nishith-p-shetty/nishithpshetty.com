@@ -1,26 +1,21 @@
 import Link from "next/link";
 
 // icons
-import {
-  RiTeamFill,
-  RiTodoFill,
-  RiDownload2Fill,
-  RiBriefcase4Fill,
-  RiArrowDownDoubleFill,
-} from "react-icons/ri";
+import { RiArrowDownDoubleFill } from "react-icons/ri";
 
 // components
 import { CoverEdited } from "@/components/ui/cover-edited";
 import { Button } from "./ui/button";
 import { Download, Send } from "lucide-react";
-import { DevImg } from "./DevImg";
-import { FloatingBadge } from "./FloatingBadge";
 import { Socials } from "./Socials";
 import { DevRoles } from "./DevRoles";
+import { HeroImage } from "./HeroImage";
+import { MobileFloatingBadge } from "./MobileFloatingBadges";
 
 export const Hero = ({ discription }) => {
   return (
-    <section className="h-[110vh] bg-secondary bg-cover bg-bottom bg-no-repeat py-8 dark:bg-none xl:h-[90vh] xl:py-24 xl:pt-28">
+    // md:h-[110vh] xl:h-[91vh]
+    <section className="bg-secondary bg-cover bg-bottom bg-no-repeat py-8 dark:bg-none xl:py-20">
       <div className="container mx-auto">
         <div className="flex justify-between gap-x-8">
           {/* text */}
@@ -35,13 +30,13 @@ export const Hero = ({ discription }) => {
               </CoverEdited>{" "}
               aka Nishith P Shetty
             </h1>
-            <p className="mx-auto mb-8 max-w-[490px] text-lg font-light text-muted-foreground xl:mx-0">
+            <p className="mx-auto mb-8 mt-2 w-full text-justify text-lg font-light text-muted-foreground xl:mx-0">
               {discription}
             </p>
             {/* buttons */}
-            <div className="mx-auto mb-12 flex flex-col gap-x-3 gap-y-3 md:flex-row xl:mx-0">
+            <div className="mx-auto mb-8 flex flex-col gap-x-3 gap-y-3 md:flex-row">
               <Link href="/contact">
-                <Button className="h-[45px] gap-x-2 rounded-full px-6 text-base xl:h-[50px]">
+                <Button className="h-[45px] min-w-[166px] gap-x-2 rounded-full px-6 text-base xl:h-[50px]">
                   Contact Me
                   <Send size={18} />
                 </Button>
@@ -49,23 +44,29 @@ export const Hero = ({ discription }) => {
               <a href="/Resume.pdf" download>
                 <Button
                   variant="secondary"
-                  className="h-[45px] gap-x-2 rounded-full border-2 border-primary px-6 text-base hover:bg-primary hover:text-black xl:h-[50px]"
+                  className="h-[45px] min-w-[166px] gap-x-2 rounded-full border-2 border-primary px-6 text-base hover:bg-primary hover:text-black xl:h-[50px]"
                 >
-                  My Resume <Download size={18} />
+                  My Resume <Download size={18} className="animate-bounce" />
                 </Button>
               </a>
             </div>
+            {/* Mobile FloatingBadge */}
+            <div>
+              <MobileFloatingBadge />
+            </div>
             {/* socials */}
             <Socials
-              containerStyles="mx-auto my-auto flex gap-x-6 xl:mx-0"
+              containerStyles="mx-auto my-auto flex gap-x-6 "
               iconsStyles="text-[22px] text-foreground transition-all hover:text-primary"
             />
           </div>
           {/* image */}
-          <div className="relative hidden xl:flex">image</div>
+          <div className="relative hidden xl:flex">
+            <HeroImage />
+          </div>
         </div>
         {/* icon */}
-        <div className="absolute bottom-44 left-2/4 hidden animate-bounce md:flex xl:bottom-12">
+        <div className="absolute bottom-44 left-2/4 hidden animate-bounce xl:bottom-12 xl:flex">
           <RiArrowDownDoubleFill className="text-3xl text-primary" />
         </div>
       </div>

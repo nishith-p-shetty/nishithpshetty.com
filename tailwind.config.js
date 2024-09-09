@@ -86,6 +86,11 @@ module.exports = {
         4: "hsl(var(--chart-4))",
         5: "hsl(var(--chart-5))",
       },
+      backgroundImage: {
+        hero_shape: "url(/hero/shape-1.svg)",
+        hero_shape2_light: "url(/hero/shape-2-light.svg)",
+        hero_shape2_dark: "url(/hero/shape-2-dark.svg)",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
