@@ -15,7 +15,7 @@ import { MobileFloatingBadge } from "./MobileFloatingBadges";
 export const Hero = ({ discription }) => {
   return (
     // md:h-[110vh] xl:h-[91vh]
-    <section className="bg-secondary bg-cover bg-bottom bg-no-repeat py-8 dark:bg-none xl:py-20">
+    <section className="bg-secondary bg-cover bg-bottom bg-no-repeat py-8 dark:bg-none xl:h-[91vh] xl:py-28">
       <div className="container mx-auto">
         <div className="flex justify-between gap-x-8">
           {/* text */}

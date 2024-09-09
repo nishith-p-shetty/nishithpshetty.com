@@ -26,9 +26,7 @@ export const Header = () => {
   return (
     <header
       className={`${
-        header
-          ? "bg-inherit py-4 shadow-lg dark:bg-accent"
-          : "py-6 dark:bg-transparent"
+        header ? "bg-inherit py-4 shadow-lg dark:bg-accent" : "py-6"
       } sticky top-0 z-30 transition-all ${pathname === "/" && "bg-inherit"} `}
     >
       <div className="container mx-auto">
