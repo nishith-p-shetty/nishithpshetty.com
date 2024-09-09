@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {
   Sheet,
   SheetContent,
+  SheetDescription,
   SheetFooter,
   SheetHeader,
   SheetTitle,
@@ -39,6 +40,7 @@ export const MobileNav = () => {
                 />
               </div>
             </div>
+            <SheetDescription />
           </SheetTitle>
         </SheetHeader>
         <div className="flex h-full flex-col items-center justify-between py-8">
