@@ -3,7 +3,7 @@ import Image from "next/image";
 export const DevImg = ({ containerStyles, imgSrc, imhHeight, imgWidth }) => {
   return (
     <section>
-      <div className={`${containerStyles}`}>
+      <div className={`${containerStyles} backdrop-blur-md`}>
         <Image
           src={imgSrc}
           //   fill={true}
