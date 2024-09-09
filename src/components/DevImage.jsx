@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export const DevImg = ({ containerStyles, imgSrc, imgHeight, imgWidth }) => {
+export const DevImage = ({ containerStyles, imgSrc, imgHeight, imgWidth }) => {
   return (
     <section>
       <div className={`${containerStyles} backdrop-blur-md`}>

@@ -1,5 +1,5 @@
 // components
-import { DevImg } from "./DevImg";
+import { DevImage } from "./DevImage";
 import { FloatingBadge } from "./FloatingBadge";
 
 // icons
@@ -33,7 +33,7 @@ export const HeroImage = () => {
         badgeText="Hackathons Won"
       />
       <div className="bg-hero_shape2_light dark:bg-hero_shape2_dark absolute -right-16 -top-0 h-[540px] w-[540px] bg-no-repeat"></div>
-      <DevImg
+      <DevImage
         containerStyles="bg-hero_shape relative h-[540px] w-[540px] -top-8 bg-bottom bg-no-repeat"
         imgSrc="/hero/Developer-Headshot.png"
         imgHeight={540}
