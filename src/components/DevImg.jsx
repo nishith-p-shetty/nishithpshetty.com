@@ -1,13 +1,13 @@
 import Image from "next/image";
 
-export const DevImg = ({ containerStyles, imgSrc, imhHeight, imgWidth }) => {
+export const DevImg = ({ containerStyles, imgSrc, imgHeight, imgWidth }) => {
   return (
     <section>
       <div className={`${containerStyles} backdrop-blur-md`}>
         <Image
           src={imgSrc}
           //   fill={true}
-          height={imhHeight / 1.5}
+          height={imgHeight / 1.5}
           width={imgWidth / 1.5}
           priority={true}
           style={{ marginLeft: "11%", paddingTop: "7%" }}

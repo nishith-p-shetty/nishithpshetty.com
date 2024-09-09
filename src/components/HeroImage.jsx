@@ -36,7 +36,7 @@ export const HeroImage = () => {
       <DevImg
         containerStyles="bg-hero_shape relative h-[540px] w-[540px] -top-8 bg-bottom bg-no-repeat"
         imgSrc="/hero/Developer-Headshot.png"
-        imhHeight={540}
+        imgHeight={540}
         imgWidth={540}
       />
     </section>
