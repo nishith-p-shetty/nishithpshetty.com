@@ -10,7 +10,7 @@ export const HeroImage = () => {
     <section>
       {/* FloatingBadge 1 */}
       <FloatingBadge
-        containerStyles="absolute top-[24%] -left-[5rem]"
+        containerStyles="absolute top-[15%] -left-[5rem]"
         icon={<RiBriefcase4Fill />}
         endCountNum={1}
         endCountText=""
@@ -18,7 +18,7 @@ export const HeroImage = () => {
       />
       {/* FloatingBadge 2 */}
       <FloatingBadge
-        containerStyles="absolute top-[80%] -left-[1rem]"
+        containerStyles="absolute top-[75%] -left-[0rem]"
         icon={<RiTodoFill />}
         endCountNum={9}
         endCountText="+"
@@ -26,7 +26,7 @@ export const HeroImage = () => {
       />
       {/* FloatingBadge 3 */}
       <FloatingBadge
-        containerStyles="absolute top-[55%] -right-10"
+        containerStyles="absolute top-[30%] -right-10"
         icon={<RiMedalFill />}
         endCountNum={1}
         endCountText="/1"
