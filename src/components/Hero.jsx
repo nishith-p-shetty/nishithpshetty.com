@@ -4,7 +4,7 @@ import Link from "next/link";
 import { RiArrowDownDoubleFill } from "react-icons/ri";
 
 // components
-import { CoverEdited } from "@/components/ui/cover-edited";
+import { Cover } from "@/components/ui/cover";
 import { Button } from "./ui/button";
 import { Download, Send } from "lucide-react";
 import { Socials } from "./Socials";
@@ -25,9 +25,7 @@ export const Hero = ({ discription }) => {
             </div>
             <h1 className="mb-4 text-6xl font-bold tracking-[-2px] xl:text-[72px] xl:leading-[80px]">
               Hello, I&apos;m{" "}
-              <CoverEdited className={"text-primary dark:text-primary"}>
-                SHETTY
-              </CoverEdited>{" "}
+              <Cover className={"text-primary dark:text-primary"}>SHETTY</Cover>{" "}
               aka Nishith P Shetty
             </h1>
             <p className="mx-auto mb-8 mt-2 w-full text-justify text-lg font-light text-muted-foreground xl:mx-0">

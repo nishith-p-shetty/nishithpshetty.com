@@ -97,8 +97,6 @@ export const Cover = ({ children, className }) => {
         key={String(hovered)}
         animate={{
           scale: hovered ? 0.8 : 1,
-          x: hovered ? [0, -30, 30, -30, 30, 0] : 0,
-          y: hovered ? [0, 30, -30, 30, -30, 0] : 0,
         }}
         exit={{
           filter: "none",
@@ -132,10 +130,6 @@ export const Cover = ({ children, className }) => {
       >
         {children}
       </motion.span>
-      <CircleIcon className="absolute -right-[2px] -top-[2px]" />
-      <CircleIcon className="absolute -bottom-[2px] -right-[2px]" delay={0.4} />
-      <CircleIcon className="absolute -left-[2px] -top-[2px]" delay={0.8} />
-      <CircleIcon className="absolute -bottom-[2px] -left-[2px]" delay={1.6} />
     </div>
   );
 };
@@ -195,16 +189,5 @@ export const Beam = ({
         </motion.linearGradient>
       </defs>
     </motion.svg>
-  );
-};
-
-export const CircleIcon = ({ className, delay }) => {
-  return (
-    <div
-      className={cn(
-        `group pointer-events-none h-2 w-2 animate-pulse rounded-full bg-neutral-600 opacity-20 group-hover/cover:hidden group-hover/cover:bg-white group-hover/cover:opacity-100 dark:bg-white`,
-        className,
-      )}
-    ></div>
   );
 };
