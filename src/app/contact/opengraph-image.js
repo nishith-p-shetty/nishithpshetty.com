@@ -24,7 +24,7 @@ export default async function Image() {
           width: "100%",
           alignItems: "center",
           justifyContent: "center",
-          backgroundImage: "linear-gradient(90deg, #434343, #000)",
+          backgroundImage: "linear-gradient(90deg, #24243e, #302b63, #0f0c29)",
           fontSize: 60,
           letterSpacing: -2,
           fontWeight: 700,
@@ -70,7 +70,19 @@ export default async function Image() {
           >
             <h2
               style={{
-                backgroundImage: "linear-gradient(90deg, #38ef7d, #11998e)",
+                backgroundImage: "linear-gradient(90deg, #FFEFBA, #FFF)",
+                backgroundClip: "text",
+                WebkitBackgroundClip: "text",
+                color: "transparent",
+                margin: "auto",
+                padding: "5px",
+              }}
+            >
+              Nishith P Shetty
+            </h2>
+            <h5
+              style={{
+                backgroundImage: "linear-gradient(90deg, #d9a7c7)",
                 backgroundClip: "text",
                 WebkitBackgroundClip: "text",
                 color: "transparent",
@@ -79,18 +91,6 @@ export default async function Image() {
               }}
             >
               {metadata.title}
-            </h2>
-            <h5
-              style={{
-                backgroundImage: "linear-gradient(90deg, #fc4a1a, #f7b733)",
-                backgroundClip: "text",
-                WebkitBackgroundClip: "text",
-                color: "transparent",
-                margin: "auto 10%",
-                padding: "5px",
-              }}
-            >
-              {metadata.description}
             </h5>
           </div>
         </div>
