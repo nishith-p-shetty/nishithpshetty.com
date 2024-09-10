@@ -11,7 +11,7 @@ import { Badge } from "./ui/badge";
 export const ProjectCard = ({ project, type }) => {
   return (
     <section>
-      <Card className="relative overflow-hidden">
+      <Card className="group relative overflow-hidden">
         <CardHeader className="p-0">
           {/* image */}
           <div className="relative flex h-[300px] w-full items-center justify-center overflow-hidden bg-secondary/40 dark:bg-secondary/40">
