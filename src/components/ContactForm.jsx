@@ -1,7 +1,9 @@
+"use client";
 // components
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
+import { useToast } from "@/hooks/use-toast";
 
 // icon
 import {
@@ -13,8 +15,9 @@ import {
 } from "lucide-react";
 
 export const ContactForm = () => {
+  const { toast } = useToast();
   return (
-    <form className="mt-6 flex flex-col gap-y-4" action="">
+    <form className="mt-6 flex flex-col gap-y-4">
       {/* input */}
       <div className="relative flex items-center">
         <Input
@@ -44,8 +47,15 @@ export const ContactForm = () => {
         />
         <MessageSquare size={20} className="absolute right-6 top-4" />
       </div>
-      <Button className="flex max-w-[166px] items-center gap-x-1" type="submit">
-        Let's Connect
+      <Button
+        className="flex max-w-[166px] items-center gap-x-1"
+        onClick={() => {
+          toast({
+            description: "Your message has been sent.",
+          });
+        }}
+      >
+        Let&apos;s Connect
         <ArrowRightIcon size={20} className="ml-2" />
       </Button>
       <Button disabled className="flex max-w-[166px] items-center gap-x-1">

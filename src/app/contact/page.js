@@ -17,12 +17,12 @@ export default function Contact() {
               Say Hello 👋
             </div>
             <h1 className="mb-8 max-w-md text-6xl font-bold tracking-[-2px] xl:text-[72px] xl:leading-[80px]">
-              Let's Work Together
+              Let&apos;s Work Together
             </h1>
             <p className="-8 max-w-[400px] text-lg font-light text-muted-foreground">
-              I am always looking for new opportunities to learn and grow. If
-              you have a project in mind, or just want to say hi, feel free to
-              get in touch.
+              I&apos;m always looking for new opportunities to learn and grow.
+              If you have a project in mind, or just want to say hi, feel free
+              to get in touch.
             </p>
           </div>
           {/* Illustration */}
