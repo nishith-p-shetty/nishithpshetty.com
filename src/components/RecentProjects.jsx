@@ -4,6 +4,9 @@ import Link from "next/link";
 // data
 import { Projects } from "@/data/Projects";
 
+// icon
+import { FaArrowCircleRight } from "react-icons/fa";
+
 // import swiper react components
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -27,7 +30,9 @@ export const RecentProjects = () => {
             Here are some of the projects I&apos;ve worked on recently.
           </p>
           <Link href="/projects">
-            <Button className="rounded-full">All projects</Button>
+            <Button className="rounded-full text-lg">
+              All projects <FaArrowCircleRight className="ml-2 animate-ping" />
+            </Button>
           </Link>
         </div>
         {/* slider */}
