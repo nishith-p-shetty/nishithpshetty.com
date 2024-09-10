@@ -39,7 +39,7 @@ export const ProjectCard = ({ project, type }) => {
               )}
               <Link
                 href={project.github}
-                target_="_blank"
+                target="_blank"
                 className="flex h-[54px] w-[54px] scale-0 items-center justify-center rounded-full bg-foreground opacity-0 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100"
               >
                 <Github className="text-primary" />
@@ -47,33 +47,46 @@ export const ProjectCard = ({ project, type }) => {
             </div>
           </div>
         </CardHeader>
-        <div className="h-full px-8 py-6">
-          <div className="left-5 top-4 mb-2 flex">
-            {type === "latest"
-              ? project.category.map((badge_name, index) => {
-                  return (
-                    <Badge
-                      key={index}
-                      className="mr-2 rounded-full text-sm font-medium uppercase"
-                    >
-                      {badge_name}
-                    </Badge>
-                  );
-                })
-              : project.techStack.map((badge_name, index) => {
-                  return (
-                    <Badge
-                      key={index}
-                      className="mr-2 rounded-full text-sm font-medium uppercase"
-                    >
-                      {badge_name}
-                    </Badge>
-                  );
-                })}
+        {type === "latest" ? (
+          <div className="h-full px-8 py-6">
+            <div className="left-5 top-4 mb-2 flex">
+              {project.category.map((badge_name, index) => {
+                return (
+                  <Badge
+                    key={index}
+                    className="mr-2 rounded-full text-sm font-medium uppercase"
+                  >
+                    {badge_name}
+                  </Badge>
+                );
+              })}
+            </div>
+            <h4 className="mb-1 text-[22px] font-semibold">{project.name}</h4>
+            <p className="text-lg text-muted-foreground">
+              {project.description}
+            </p>
           </div>
-          <h4 className="mb-1 text-[22px] font-semibold">{project.name}</h4>
-          <p className="text-lg text-muted-foreground">{project.description}</p>
-        </div>
+        ) : (
+          <div className="h-full px-8 py-6">
+            <h4 className="mb-1 text-[22px] font-semibold">{project.name}</h4>
+            <p className="text-lg text-muted-foreground">
+              {project.description}
+            </p>
+            <div className="left-5 top-4 mt-2 grid grid-cols-3 gap-4">
+              {project.techStack.map((badge_name, index) => {
+                return (
+                  <Badge
+                    key={index}
+                    variant="outline"
+                    className="mx-0 flex items-center justify-center gap-x-4 rounded-full text-center align-middle text-xs font-medium text-primary"
+                  >
+                    {badge_name}
+                  </Badge>
+                );
+              })}
+            </div>
+          </div>
+        )}
       </Card>
     </section>
   );
