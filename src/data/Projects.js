@@ -10,7 +10,7 @@ export const categories = [
 
 export const Projects = [
   {
-    image: "FlaskFeedbackForm.png",
+    image: "/project_thumbnail_photos/FlaskFeedbackForm.png",
     category: ["Full-Stack", "Backend", "Frontend"],
     techStack: ["Flask", "SQLAlchemy", "PostgreSQL"],
     name: "Flask Feedback Form",
@@ -20,7 +20,7 @@ export const Projects = [
     isLatest: true,
   },
   {
-    image: "VisitorCounter.png",
+    image: "/project_thumbnail_photos/VisitorCounter.png",
     category: ["Backend"],
     techStack: ["CloudFlare Workers", "Key-Value Store", "JavaScript"],
     name: "Visitor Counter",
@@ -30,7 +30,7 @@ export const Projects = [
     isLatest: true,
   },
   {
-    image: "MultiAgentAIChatBot.png",
+    image: "/project_thumbnail_photos/MultiAgentAIChatBot.png",
     category: ["Full-Stack", "AI", "Backend"],
     techStack: [
       "CrewAI",
@@ -47,7 +47,7 @@ export const Projects = [
     isLatest: true,
   },
   {
-    image: "VTUResultsFetcher.png",
+    image: "/project_thumbnail_photos/VTUResultsFetcher.png",
     category: ["Backend", "Web Scraper"],
     techStack: ["Python", "Requests", "BeautifulSoup", "Pandas"],
     name: "VTU Results Fetcher",
@@ -57,7 +57,7 @@ export const Projects = [
     isLatest: false,
   },
   {
-    image: "FlaskBloggingSite.png",
+    image: "/project_thumbnail_photos/FlaskBloggingSite.png",
     category: ["Full-Stack", "Backend", "Frontend"],
     techStack: ["Flask", "SQLAlchemy", "SQLITE3", "Bootstrap"],
     name: "Flask Blogging Site",
@@ -67,7 +67,7 @@ export const Projects = [
     isLatest: false,
   },
   {
-    image: "SimpleCalculator.png",
+    image: "/project_thumbnail_photos/SimpleCalculator.png",
     category: ["Frontend"],
     techStack: ["HTML", "CSS", "JavaScript"],
     name: "Simple Calculator",
@@ -78,7 +78,7 @@ export const Projects = [
     isLatest: false,
   },
   {
-    image: "Idhika.png",
+    image: "/project_thumbnail_photos/Idhika.png",
     category: ["Frontend"],
     techStack: ["HTML", "CSS", "Bootstrap"],
     name: "Idhika",
@@ -88,7 +88,7 @@ export const Projects = [
     isLatest: false,
   },
   {
-    image: "To-DOTask.png",
+    image: "/project_thumbnail_photos/To-DOTask.png",
     category: ["Console"],
     techStack: ["Python", "C", "C++"],
     name: "To-DO Task",
@@ -98,7 +98,7 @@ export const Projects = [
     isLatest: false,
   },
   {
-    image: "TickTacToe.png",
+    image: "/project_thumbnail_photos/TickTacToe.png",
     category: ["Console"],
     techStack: ["Python"],
     name: "Tick Tac Toe",
