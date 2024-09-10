@@ -14,7 +14,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function About() {
   return (
-    <section className="bg-secondary p-5">
+    <section className="bg-secondary p-8 pb-10">
       <div className="container mx-auto">
         <h2 className="relative mx-auto mb-8 flex w-max items-center justify-between gap-x-3 pt-8 text-center text-5xl font-bold text-inherit before:h-[24px] before:w-[24px] xl:mb-16">
           About Me
