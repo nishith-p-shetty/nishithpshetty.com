@@ -1,4 +1,4 @@
-export const categories = [
+export const Categories = [
   "All",
   "Full-Stack",
   "Backend",
