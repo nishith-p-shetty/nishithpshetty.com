@@ -8,7 +8,7 @@ export const categories = [
   "Frontend",
 ];
 
-export const Projects = [
+export const AllProjects = [
   {
     name: "MultiAgent AI ChatBot",
     description: "Chatbot system for diverse tasks.",

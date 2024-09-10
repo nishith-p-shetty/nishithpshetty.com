@@ -2,7 +2,7 @@
 import Link from "next/link";
 
 // data
-import { Projects } from "@/data/Projects";
+import { AllProjects } from "@/data/AllProjects";
 
 // icon
 import { FaArrowCircleRight } from "react-icons/fa";
@@ -50,7 +50,7 @@ export const RecentProjects = () => {
             pagination={{ clickable: true }}
           >
             {/* show only the recent projects for the slides */}
-            {Projects.filter((project) => {
+            {AllProjects.filter((project) => {
               return project.isLatest;
             }).map((project, index) => {
               return (
