@@ -94,6 +94,8 @@ module.exports = {
         about_shape_dark: "url(/about/shape-dark.svg)",
         heading_dots_light: "url(/bullet_dots-light.svg)",
         heading_dots_dark: "url(/bullet_dots-dark.svg)",
+        contact_illustration_light: "url(/contact/illustration-light.svg)",
+        contact_illustration_dark: "url(/contact/illustration-dark.svg)",
       },
     },
   },
