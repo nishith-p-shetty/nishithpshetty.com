@@ -1,6 +1,5 @@
 // icons
 import {
-  RiYoutubeFill,
   RiLinkedinBoxFill,
   RiGithubFill,
   RiTwitterXFill,
