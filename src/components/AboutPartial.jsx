@@ -20,7 +20,7 @@ export const AboutPartial = () => {
   return (
     <section className="bg-secondary p-8">
       <div className="container mx-auto">
-        <h2 className="relative mx-auto mb-8 flex w-max items-center justify-between gap-x-3 pt-8 text-center text-5xl font-bold text-inherit before:h-[24px] before:w-[24px] xl:mb-16">
+        <h2 className="before:bg-about_dots_light before:dark:bg-about_dots_dark relative mx-auto mb-8 flex w-max items-center justify-between gap-x-3 pt-8 text-center text-5xl font-bold text-inherit before:h-[24px] before:w-[24px] before:bg-center before:bg-no-repeat xl:mb-16">
           About Me
         </h2>
         <div className="flex flex-col xl:flex-row">
