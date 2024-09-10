@@ -1,7 +1,8 @@
 export const metadata = {
   metadataBase: new URL("https://www.nishithpshetty.com/"),
-  title: "Test Page",
-  description: "A test page site",
+  title: "Contact Me",
+  description:
+    "Get in touch with Nishith P Shetty. Connect with me for collaborations, inquiries, or to learn more about my work in AI/ML, web development, and photography.",
   keywords: [
     "Nishith P Shetty",
     "Portfolio",
@@ -18,8 +19,8 @@ export const metadata = {
   creator: "Nishith P Shetty",
   publisher: "Nishith P Shetty",
   openGraph: {
-    url: "https://www.nishithpshetty.com",
-    siteName: "Test Page",
+    url: "https://www.nishithpshetty.com/contact",
+    siteName: "Contact Me",
   },
 };
 
