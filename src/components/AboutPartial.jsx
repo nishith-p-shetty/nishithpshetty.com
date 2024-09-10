@@ -46,7 +46,7 @@ export const AboutPartial = () => {
               <Link href="/about">
                 <Button className="items-center justify-center align-middle text-2xl">
                   Know More
-                  <MdOutlineRocketLaunch className="ml-2" />
+                  <MdOutlineRocketLaunch className="ml-2 animate-bounce" />
                 </Button>
               </Link>
             </div>
