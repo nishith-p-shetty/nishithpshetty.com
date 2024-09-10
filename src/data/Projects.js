@@ -8,7 +8,7 @@ export const categories = [
   "Frontend",
 ];
 
-export const Projexts = [
+export const Projects = [
   {
     image: "FlaskFeedbackForm.png",
     category: ["Full-Stack", "Backend", "Frontend"],
