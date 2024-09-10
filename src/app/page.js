@@ -2,6 +2,7 @@
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
 import { RecentProjects } from "@/components/RecentProjects";
+import { CTA } from "@/components/CTA";
 
 import { metadata } from "./layout";
 
@@ -13,6 +14,8 @@ export default function Home() {
       <About />
       <div className="border-3 border-b border-dotted border-primary"></div>
       <RecentProjects />
+      <div className="border-3 border-b border-dotted border-primary"></div>
+      <CTA />
       <div className="border-3 border-b border-dotted border-primary"></div>
     </main>
   );
