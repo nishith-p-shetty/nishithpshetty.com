@@ -12,11 +12,11 @@ import { SkillsTools } from "@/data/SkillsTools";
 import { DevImage } from "@/components/DevImage";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-export default function About() {
+export const About = () => {
   return (
-    <section className="bg-secondary p-8 pb-10">
+    <section className="bg-secondary p-8" id="aboutme">
       <div className="container mx-auto">
-        <h2 className="relative mx-auto mb-8 flex w-max items-center justify-between gap-x-3 pt-8 text-center text-5xl font-bold text-inherit before:h-[24px] before:w-[24px] xl:mb-16">
+        <h2 className="before:bg-about_dots_light before:dark:bg-about_dots_dark relative mx-auto mb-8 flex w-max items-center justify-between gap-x-3 pt-8 text-center text-5xl font-bold text-inherit before:h-[24px] before:w-[24px] before:bg-center before:bg-no-repeat xl:mb-16">
           About Me
         </h2>
         <div className="flex flex-col xl:flex-row">
@@ -192,7 +192,14 @@ export default function About() {
                   {/* tool list */}
                   <div className="flex flex-wrap justify-start gap-x-8 gap-y-8 text-3xl">
                     {SkillsTools.tools.map((item, index) => {
-                      return <div key={index}>{item}</div>;
+                      return (
+                        <div
+                          key={index}
+                          className="text-foreground transition-all hover:text-primary"
+                        >
+                          {item}
+                        </div>
+                      );
                     })}
                   </div>
                 </div>
@@ -203,4 +210,4 @@ export default function About() {
       </div>
     </section>
   );
-}
+};

@@ -1,6 +1,6 @@
 // components
 import { Hero } from "@/components/Hero";
-import { AboutPartial } from "@/components/AboutPartial";
+import { About } from "@/components/About";
 import { RecentProjects } from "@/components/RecentProjects";
 
 import { metadata } from "./layout";
@@ -10,7 +10,7 @@ export default function Home() {
     <main>
       <Hero discription={metadata.description} />
       <div className="border-3 border-b border-dotted border-primary"></div>
-      <AboutPartial />
+      <About />
       <div className="border-3 border-b border-dotted border-primary"></div>
       <RecentProjects />
       <div className="border-3 border-b border-dotted border-primary"></div>
