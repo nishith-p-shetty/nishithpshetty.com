@@ -24,7 +24,6 @@ import { useForm } from "react-hook-form";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -74,8 +73,7 @@ export const ContactForm = () => {
     // ✅ This will be type-safe and validated.
     setIsSending(true);
     const response = await SendMail(data);
-    if (response) {
-      console.log(response);
+    if (response === "success") {
       //   toast({
       //     title: "Your message has been sent.",
       //     description: (
@@ -85,7 +83,6 @@ export const ContactForm = () => {
       //     ),
       //   });
     } else {
-      console.log(response);
       //   toast({
       //     variant: "destructive",
       //     title: "Uh oh! Something went wrong.",

@@ -1,5 +1,5 @@
 "use server";
-const nodemailer = require("nodemailer");
+import nodemailer from "nodemailer";
 
 export const SendMail = (data) => {
   const recipientName = data.recipientName;
@@ -505,7 +505,7 @@ export const SendMail = (data) => {
     subject: "New lead from portfolio.",
     text: lead,
   };
-
+  var reply = "";
   try {
     transporter.sendMail(replyMail, function (error, info) {
       if (error) {
@@ -513,6 +513,7 @@ export const SendMail = (data) => {
         throw new Error("Failed to send replyMail" + error);
       } else {
         console.log("Reply Email Sent" + info.response);
+        reply += info.response + "\n   ";
       }
     });
 
@@ -522,17 +523,18 @@ export const SendMail = (data) => {
         throw new Error("Failed to send leadMail");
       } else {
         console.log("Lead Email sent: " + info.response);
+        reply += info.response;
       }
     });
 
     // both mail sent
-    return "success";
+    return "success" + reply;
   } catch (error) {
     // error in any mail
     console.log(error.message);
     return "failed";
   }
 
-  //   return true;
-  //   return false;
+  //   return "success";
+  //   return "failed";
 };
