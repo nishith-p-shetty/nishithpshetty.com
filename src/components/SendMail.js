@@ -1,16 +1,10 @@
 "use server";
-// import { nodemailer } from "nodemailer";
 const nodemailer = require("nodemailer");
 
-export const SendMail = (FormData) => {
-  //   console.log(
-  //     FormData.get("recipientName"),
-  //     FormData.recipientEmail,
-  //     FormData.recipientMessage,
-  //   );
-  const recipientName = FormData.get("recipientName");
-  const recipientEmail = FormData.get("recipientEmail");
-  const recipientMessage = FormData.get("recipientMessage");
+export const SendMail = (data) => {
+  const recipientName = data.recipientName;
+  const recipientEmail = data.recipientEmail;
+  const recipientMessage = data.recipientMessage;
   const lead =
     "Name: " +
     recipientName +
@@ -515,22 +509,20 @@ export const SendMail = (FormData) => {
   try {
     transporter.sendMail(replyMail, function (error, info) {
       if (error) {
-        // console.log(error);
+        console.log(error);
         throw new Error("Failed to send replyMail" + error);
+      } else {
+        console.log("Reply Email Sent" + info.response);
       }
-      //   else {
-      //     console.log("Reply Email Sent" + info.response);
-      // }
     });
 
     transporter.sendMail(leadMail, function (error, info) {
       if (error) {
         // console.log(error);
         throw new Error("Failed to send leadMail");
+      } else {
+        console.log("Lead Email sent: " + info.response);
       }
-      //    else {
-      //     console.log("Lead Email sent: " + info.response);
-      // }
     });
 
     // both mail sent
@@ -541,6 +533,6 @@ export const SendMail = (FormData) => {
     return "failed";
   }
 
-  // return true;
+  //   return true;
   //   return false;
 };
