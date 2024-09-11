@@ -512,35 +512,35 @@ export const SendMail = (FormData) => {
     text: lead,
   };
 
-  //   try {
-  //     transporter.sendMail(replyMail, function (error, info) {
-  //       if (error) {
-  //         // console.log(error);
-  //         throw new Error("Failed to send replyMail" + error);
-  //       }
-  //       //   else {
-  //       //     console.log("Reply Email Sent" + info.response);
-  //       // }
-  //     });
+  try {
+    transporter.sendMail(replyMail, function (error, info) {
+      if (error) {
+        // console.log(error);
+        throw new Error("Failed to send replyMail" + error);
+      }
+      //   else {
+      //     console.log("Reply Email Sent" + info.response);
+      // }
+    });
 
-  //     transporter.sendMail(leadMail, function (error, info) {
-  //       if (error) {
-  //         // console.log(error);
-  //         throw new Error("Failed to send leadMail");
-  //       }
-  //       //    else {
-  //       //     console.log("Lead Email sent: " + info.response);
-  //       // }
-  //     });
+    transporter.sendMail(leadMail, function (error, info) {
+      if (error) {
+        // console.log(error);
+        throw new Error("Failed to send leadMail");
+      }
+      //    else {
+      //     console.log("Lead Email sent: " + info.response);
+      // }
+    });
 
-  //     // both mail sent
-  //     return "success";
-  //   } catch (error) {
-  //     // error in any mail
-  //     console.log(error.message);
-  //     return "failed";
-  //   }
+    // both mail sent
+    return "success";
+  } catch (error) {
+    // error in any mail
+    console.log(error.message);
+    return "failed";
+  }
 
   // return true;
-  return false;
+  //   return false;
 };
