@@ -1,7 +1,15 @@
 "use server";
 import nodemailer from "nodemailer";
 
-export const SendMail = (data) => {
+export async function SendMail(data) {
+  const {
+    MY_ZOHO_SMTP_HOST,
+    MY_ZOHO_SMTP_PORT,
+    MY_ZOHO_SMTP_USER,
+    MY_ZOHO_SMTP_PASSWORD,
+    MY_ZOHO_LEAD_RECEIVER,
+  } = process.env;
+
   const recipientName = data.recipientName;
   const recipientEmail = data.recipientEmail;
   const recipientMessage = data.recipientMessage;
@@ -14,12 +22,12 @@ export const SendMail = (data) => {
     recipientMessage;
 
   const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: process.env.SMTP_PORT,
+    host: MY_ZOHO_SMTP_HOST,
+    port: MY_ZOHO_SMTP_PORT,
     secure: true,
     auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASSWORD,
+      user: MY_ZOHO_SMTP_USER,
+      pass: MY_ZOHO_SMTP_PASSWORD,
     },
   });
 
@@ -491,8 +499,15 @@ export const SendMail = (data) => {
 	</body>
 </html>`;
 
+  try {
+    await transporter.verify();
+  } catch (error) {
+    console.log(error);
+    return "failed";
+  }
+
   const replyMail = {
-    from: process.env.SMTP_USER,
+    from: MY_ZOHO_SMTP_USER,
     to: recipientEmail,
     subject: "Thank You for Reaching Out.",
     text: textContent,
@@ -500,29 +515,16 @@ export const SendMail = (data) => {
   };
 
   const leadMail = {
-    from: process.env.SMTP_USER,
-    to: process.env.LEAD_RECEIVER,
+    from: MY_ZOHO_SMTP_USER,
+    to: MY_ZOHO_LEAD_RECEIVER,
     subject: "New lead from portfolio.",
     text: lead,
   };
-  try {
-    transporter.sendMail(replyMail, function (error, info) {
-      if (error) {
-        console.log(error);
-        throw new Error("Failed to send replyMail" + error);
-      } else {
-        // console.log("Reply Email Sent" + info.response);
-      }
-    });
 
-    transporter.sendMail(leadMail, function (error, info) {
-      if (error) {
-        console.log(error);
-        throw new Error("Failed to send leadMail");
-      } else {
-        // console.log("Lead Email sent: " + info.response);
-      }
-    });
+  try {
+    await transporter.sendMail(replyMail);
+
+    await transporter.sendMail(leadMail);
 
     // both mail sent
     return "success";
@@ -534,4 +536,4 @@ export const SendMail = (data) => {
 
   //   return "success";
   //   return "failed";
-};
+}
