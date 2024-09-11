@@ -16,7 +16,7 @@ export const About = () => {
   return (
     <section className="bg-secondary p-8" id="aboutme">
       <div className="container mx-auto">
-        <h2 className="before:bg-heading_dots_light before:dark:bg-heading_dots_dark relative mx-auto mb-8 flex w-max items-center justify-between gap-x-3 pt-8 text-center text-5xl font-bold text-inherit before:h-[24px] before:w-[24px] before:bg-center before:bg-no-repeat xl:mb-16">
+        <h2 className="relative mx-auto mb-8 flex w-max items-center justify-between gap-x-3 pt-8 text-center text-5xl font-bold text-inherit before:h-[24px] before:w-[24px] before:bg-heading_dots_light before:bg-center before:bg-no-repeat before:dark:bg-heading_dots_dark xl:mb-16">
           About Me
         </h2>
         <div className="flex flex-col xl:flex-row">
@@ -69,7 +69,7 @@ export const About = () => {
                   {AboutMeBasicInfo.map((item, index) => {
                     return (
                       <div
-                        className="mx-auto flex items-center gap-x-4 xl:mx-0"
+                        className="mx-0 flex items-center gap-x-4"
                         key={index}
                       >
                         <div className="text-primary">{item.icon}</div>
