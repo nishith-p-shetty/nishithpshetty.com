@@ -73,7 +73,7 @@ export const ContactForm = () => {
     // ✅ This will be type-safe and validated.
     setIsSending(true);
     const response = await SendMail(data);
-    console.log(response);
+    console.log("response: " + response);
 
     if (response === "success") {
       //   toast({
