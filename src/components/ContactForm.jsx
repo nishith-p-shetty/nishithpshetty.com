@@ -73,23 +73,17 @@ export const ContactForm = () => {
     // ✅ This will be type-safe and validated.
     setIsSending(true);
     const response = await SendMail(data);
-    console.log("response: " + response);
-
     if (response === "success") {
-      //   toast({
-      //     title: "Your message has been sent.",
-      //     description: (
-      //       <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-      //         <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-      //       </pre>
-      //     ),
-      //   });
+      toast({
+        description: "Your message has been sent.",
+      });
+      form.reset();
     } else {
-      //   toast({
-      //     variant: "destructive",
-      //     title: "Uh oh! Something went wrong.",
-      //     description: "There was a problem with your request.",
-      //   });
+      toast({
+        variant: "destructive",
+        title: "Uh oh! Something went wrong.",
+        description: "There was a problem with your request.",
+      });
     }
     setIsSending(false);
   }

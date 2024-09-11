@@ -530,10 +530,7 @@ export async function SendMail(data) {
     return "success";
   } catch (error) {
     // error in any mail
-    console.log(error.message);
+    console.log(error);
     return "failed";
   }
-
-  //   return "success";
-  //   return "failed";
 }

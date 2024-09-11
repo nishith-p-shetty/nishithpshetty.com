@@ -7,6 +7,9 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 
+// toast comonent
+import { Toaster } from "@/components/ui/toaster";
+
 // theme
 import { ThemeProvider } from "@/components/ThemeProvider";
 
@@ -54,6 +57,7 @@ export default function RootLayout({ children }) {
           <SpeedInsights />
           <Footer />
         </ThemeProvider>
+        <Toaster />
       </body>
     </html>
   );
