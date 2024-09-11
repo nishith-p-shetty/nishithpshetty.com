@@ -29,8 +29,8 @@ export const LayoutGrid = ({ cards }) => {
               selected?.id === card.id
                 ? "absolute inset-0 z-50 m-auto flex h-3/4 w-full cursor-pointer flex-col flex-wrap items-center justify-center rounded-lg md:w-3/4"
                 : lastSelected?.id === card.id
-                  ? "z-40 h-full w-full rounded-xl bg-white"
-                  : "h-full w-full rounded-xl bg-white",
+                  ? "z-40 h-full w-full rounded-xl"
+                  : "h-full w-full rounded-xl",
             )}
             layoutId={`card-${card.id}`}
           >
