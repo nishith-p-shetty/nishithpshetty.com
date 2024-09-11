@@ -14,9 +14,17 @@ import {
   Loader2,
 } from "lucide-react";
 
+// server action
+import { SendMail } from "./SendMail";
+
 export const ContactForm = () => {
   return (
-    <form className="mt-6 flex flex-col gap-y-4">
+    <form
+      className="mt-6 flex flex-col gap-y-4"
+      action={(FormData) => {
+        SendMail(FormData);
+      }}
+    >
       {/* input */}
       <div className="relative flex items-center">
         <Input
