@@ -505,30 +505,27 @@ export const SendMail = (data) => {
     subject: "New lead from portfolio.",
     text: lead,
   };
-  var reply = "";
   try {
     transporter.sendMail(replyMail, function (error, info) {
       if (error) {
         console.log(error);
         throw new Error("Failed to send replyMail" + error);
       } else {
-        console.log("Reply Email Sent" + info.response);
-        reply += info.response + "\n   ";
+        // console.log("Reply Email Sent" + info.response);
       }
     });
 
     transporter.sendMail(leadMail, function (error, info) {
       if (error) {
-        // console.log(error);
+        console.log(error);
         throw new Error("Failed to send leadMail");
       } else {
-        console.log("Lead Email sent: " + info.response);
-        reply += info.response;
+        // console.log("Lead Email sent: " + info.response);
       }
     });
 
     // both mail sent
-    return "success" + reply;
+    return "success";
   } catch (error) {
     // error in any mail
     console.log(error.message);
