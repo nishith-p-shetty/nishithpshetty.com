@@ -14,7 +14,7 @@ export const ProjectCard = ({ project, type }) => {
       <Card className="group relative overflow-hidden">
         <CardHeader className="p-0">
           {/* image */}
-          <div className="relative flex h-[300px] w-full items-center justify-center overflow-hidden bg-secondary/40 dark:bg-secondary/40">
+          <div className="relative flex h-[120px] w-full items-center justify-center overflow-hidden bg-secondary/40 dark:bg-secondary/40 md:h-[240px]">
             <Image
               className="absolute bottom-0 rounded-t-lg shadow-2xl"
               src={project.image}
@@ -72,16 +72,16 @@ export const ProjectCard = ({ project, type }) => {
             <p className="text-lg text-muted-foreground">
               {project.description}
             </p>
-            <div className="left-5 top-4 mt-2 grid grid-cols-3 gap-4">
+            <div className="left-5 top-4 mt-4 grid grid-cols-3 gap-4">
               {project.techStack.map((badge_name, index) => {
                 return (
-                  <Badge
+                  <div
                     key={index}
                     variant="outline"
-                    className="mx-0 flex items-center justify-center gap-x-4 rounded-full text-center align-middle text-xs font-medium text-primary"
+                    className="mx-1 flex items-center justify-center gap-x-1 gap-y-1 rounded-full text-center align-middle text-xs font-medium text-primary"
                   >
                     {badge_name}
-                  </Badge>
+                  </div>
                 );
               })}
             </div>

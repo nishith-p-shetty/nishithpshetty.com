@@ -20,7 +20,7 @@ export default function Projects() {
   return (
     <section className="bg-secondary p-12">
       <div className="container mx-auto">
-        <h2 className="before:bg-heading_dots_light before:dark:bg-heading_dots_dark relative mx-auto mb-8 flex w-max items-center justify-between gap-x-3 text-center text-4xl font-bold before:h-[24px] before:w-[24px] before:bg-center before:bg-no-repeat xl:mb-16">
+        <h2 className="relative mx-auto mb-8 flex w-max items-center justify-between gap-x-3 text-center text-4xl font-bold before:h-[24px] before:w-[24px] before:bg-heading_dots_light before:bg-center before:bg-no-repeat before:dark:bg-heading_dots_dark xl:mb-16">
           My Projects
         </h2>
         {/* tabs */}
