@@ -23,7 +23,7 @@ export const RecentProjects = () => {
       <div className="container mx-auto">
         {/* heading caption */}
         <div className="mx-auto mb-12 flex max-w-[400px] flex-col items-center justify-center text-center xl:mx-0 xl:h-[400px] xl:items-start xl:text-left">
-          <h2 className="before:bg-heading_dots_light before:dark:bg-heading_dots_dark relative mb-4 flex w-max items-center justify-between gap-x-3 text-4xl font-bold before:h-[24px] before:w-[24px] before:bg-center before:bg-no-repeat">
+          <h2 className="relative mb-4 flex w-max items-center justify-between gap-x-3 text-4xl font-bold before:h-[24px] before:w-[24px] before:bg-heading_dots_light before:bg-center before:bg-no-repeat before:dark:bg-heading_dots_dark">
             Latest Projects
           </h2>
           <p className="mb-8 text-lg font-light text-muted-foreground">
