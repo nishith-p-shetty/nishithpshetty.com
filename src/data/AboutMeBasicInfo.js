@@ -23,11 +23,11 @@ export const AboutMeBasicInfo = [
   },
   {
     icon: <MailIcon size={20} />,
-    text: "nishithpshetty@nishithpshetty.com",
+    text: "nishithpshetty@gmail.com",
   },
   {
     icon: <MailIcon size={20} />,
-    text: "nishithpshetty@gmail.com",
+    text: "nishithpshetty@nishithpshetty.com",
   },
   // {
   //   icon: <Calendar size={20} />,
@@ -35,6 +35,6 @@ export const AboutMeBasicInfo = [
   // },
   {
     icon: <HomeIcon size={20} />,
-    text: "Bengaluru",
+    text: "Bengaluru, Karnataka",
   },
 ];

@@ -14,7 +14,7 @@ export const ProjectCard = ({ project, type }) => {
       <Card className="group relative overflow-hidden">
         <CardHeader className="p-0">
           {/* image */}
-          <div className="relative flex h-[120px] w-full items-center justify-center overflow-hidden bg-secondary/40 dark:bg-secondary/40 md:h-[240px]">
+          <div className="relative flex h-[150px] w-full items-center justify-center overflow-hidden bg-secondary/40 dark:bg-secondary/40 md:h-[240px]">
             <Image
               className="absolute bottom-0 rounded-t-lg shadow-2xl"
               src={project.image}

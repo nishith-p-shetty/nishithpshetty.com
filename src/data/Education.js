@@ -16,7 +16,14 @@ export const Education = [
   {
     institution: "Shantidhama Public School",
     course: "10th",
-    time: "Jul 2018 ‑ Jul 2019",
+    time: "Apr 2010 ‑ Jul 2019",
+    location: "Bengaluru, India",
+    grade: "85%",
+  },
+  {
+    institution: "Sri Vani Education Centre ",
+    course: "Primary",
+    time: "Apr 2007 ‑ Jul 2010",
     location: "Bengaluru, India",
     grade: "85%",
   },

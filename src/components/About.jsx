@@ -31,18 +31,18 @@ export const About = () => {
           </div>
           {/* tabs */}
           <Tabs defaultValue="PersonalInformation" className="flex-1">
-            <TabsList className="grid w-full border-primary xl:max-w-[520px] xl:grid-cols-3 xl:border-2">
+            <TabsList className="grid w-full border-primary xl:max-w-[520px] xl:grid-cols-4 xl:border-2">
               <TabsTrigger
                 value="PersonalInformation"
                 className="w-[162px] xl:w-auto"
               >
                 Personal Info
               </TabsTrigger>
-              <TabsTrigger
-                value="Qualifications"
-                className="w-[162px] xl:w-auto"
-              >
-                Qualifications
+              <TabsTrigger value="Experience" className="w-[162px] xl:w-auto">
+                Experience
+              </TabsTrigger>
+              <TabsTrigger value="Education" className="w-[162px] xl:w-auto">
+                Education
               </TabsTrigger>
               <TabsTrigger value="SkillsTools" className="w-[162px] xl:w-auto">
                 Skills & Tools
@@ -85,75 +85,79 @@ export const About = () => {
                   <div>English, Kannada, Hindi</div>
                 </div>
               </TabsContent>
-              {/* Qualifications Content */}
-              <TabsContent value="Qualifications">
+
+              {/* Experience Content */}
+              <TabsContent value="Experience">
                 <h3 className="mb-8 text-center text-3xl font-bold xl:text-left">
                   My Awesome Journey
                 </h3>
-                {/* experience & education wrapper */}
-                <div className="grid gap-y-2 md:grid-cols-2">
-                  {/*  Experience */}
-                  <div className="flex flex-col gap-y-6">
-                    <div className="flex items-center gap-x-4 text-[22px] text-primary">
-                      <Briefcase />
-                      <h4 className="font-medium capitalize">Experince</h4>
-                    </div>
-                    {/* experince list */}
-                    <div className="flex flex-col gap-y-8">
-                      {WorkExperience.map((item, index) => {
-                        return (
-                          <div className="group flex gap-x-8" key={index}>
-                            <div className="relative ml-2 h-[84px] w-[1px] bg-border">
-                              <div className="absolute -left-[5px] h-[11px] w-[11px] rounded-full bg-primary transition-all duration-500 group-hover:translate-y-[84px]"></div>
-                            </div>
-                            <div>
-                              <div className="leading-none-mb-2 text-xl font-semibold">
-                                {item.company}
-                              </div>
-                              <div className="mb-4 text-lg leading-none text-muted-foreground">
-                                {item.role}
-                              </div>
-                              <div className="text-base font-medium">
-                                {item.time}
-                              </div>
-                            </div>
-                          </div>
-                        );
-                      })}
-                    </div>
+                <div className="flex flex-col gap-y-6">
+                  <div className="flex items-center gap-x-4 text-[22px] text-primary">
+                    <Briefcase />
+                    <h4 className="font-medium capitalize">Experience</h4>
                   </div>
-                  {/* education */}
-                  <div className="flex flex-col gap-y-6">
-                    <div className="flex items-center gap-x-4 text-[22px] text-primary">
-                      <GraduationCap size={28} />
-                      <h4 className="font-medium capitalize">Education</h4>
-                    </div>
-                    {/* education list */}
-                    <div className="flex flex-col gap-y-8">
-                      {Education.map((item, index) => {
-                        return (
-                          <div className="group flex gap-x-8" key={index}>
-                            <div className="relative ml-2 h-[84px] w-[1px] bg-border">
-                              <div className="absolute -left-[5px] h-[11px] w-[11px] rounded-full bg-primary transition-all duration-500 group-hover:translate-y-[84px]"></div>
+                  {/* experience list */}
+                  <div className="flex flex-col gap-y-8">
+                    {WorkExperience.map((item, index) => {
+                      return (
+                        <div className="group flex gap-x-8" key={index}>
+                          <div className="relative ml-2 h-[84px] w-[1px] bg-border">
+                            <div className="absolute -left-[5px] h-[11px] w-[11px] rounded-full bg-primary transition-all duration-500 group-hover:translate-y-[84px]"></div>
+                          </div>
+                          <div>
+                            <div className="leading-none-mb-2 text-xl font-semibold">
+                              {item.company}
                             </div>
-                            <div>
-                              <div className="leading-none-mb-2 text-xl font-semibold">
-                                {item.institution}
-                              </div>
-                              <div className="mb-4 text-lg leading-none text-muted-foreground">
-                                {item.course}
-                              </div>
-                              <div className="text-base font-medium">
-                                {item.time}
-                              </div>
+                            <div className="mb-4 text-lg leading-none text-muted-foreground">
+                              {item.role}
+                            </div>
+                            <div className="text-base font-medium">
+                              {item.time}
                             </div>
                           </div>
-                        );
-                      })}
-                    </div>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               </TabsContent>
+
+              {/* Education Content */}
+              <TabsContent value="Education">
+                <h3 className="mb-8 text-center text-3xl font-bold xl:text-left">
+                  My Educational Journey
+                </h3>
+                <div className="flex flex-col gap-y-6">
+                  <div className="flex items-center gap-x-4 text-[22px] text-primary">
+                    <GraduationCap size={28} />
+                    <h4 className="font-medium capitalize">Education</h4>
+                  </div>
+                  {/* education list */}
+                  <div className="flex flex-col gap-y-8">
+                    {Education.map((item, index) => {
+                      return (
+                        <div className="group flex gap-x-8" key={index}>
+                          <div className="relative ml-2 h-[84px] w-[1px] bg-border">
+                            <div className="absolute -left-[5px] h-[11px] w-[11px] rounded-full bg-primary transition-all duration-500 group-hover:translate-y-[84px]"></div>
+                          </div>
+                          <div>
+                            <div className="leading-none-mb-2 text-xl font-semibold">
+                              {item.institution}
+                            </div>
+                            <div className="mb-4 text-lg leading-none text-muted-foreground">
+                              {item.course}
+                            </div>
+                            <div className="text-base font-medium">
+                              {item.time}
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              </TabsContent>
+
               {/* Skills & Tools Content */}
               <TabsContent
                 value="SkillsTools"
@@ -163,44 +167,46 @@ export const About = () => {
                   Tools I use Everyday
                 </h3>
                 {/* skills  */}
-                <div className="mb-16">
-                  <h4 className="mb-2 text-xl font-semibold">Skills</h4>
-                  <div className="mb-4 border-b border-border"></div>
-                  {/* skill list */}
-                  <div className="mb-12 grid gap-4 xl:grid-cols-2">
-                    {SkillsTools.skills.map((item, index) => {
-                      return (
-                        <div
-                          className="mx-auto flex items-center gap-x-4 xl:mx-0"
-                          key={index}
-                        >
-                          <div className="flex items-center justify-center gap-x-3">
-                            <FaDotCircle className="text-sm text-primary" />
+                <div className="grid grid-cols-2 gap-1">
+                  <div className="mb-16">
+                    <h4 className="mb-2 text-xl font-semibold">Skills</h4>
+                    <div className="mb-4 border-b border-border"></div>
+                    {/* skill list */}
+                    <div className="mb-12 grid gap-4 md:grid-cols-2">
+                      {SkillsTools.skills.map((item, index) => {
+                        return (
+                          <div
+                            className="mx-auto flex items-center gap-x-4 xl:mx-0"
+                            key={index}
+                          >
+                            <div className="flex items-center justify-center gap-x-3">
+                              <FaDotCircle className="text-sm text-primary" />
+                              {item}
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                  {/* tools */}
+                  <div>
+                    <h4 className="mb-2 text-xl font-semibold xl:text-left">
+                      Tools
+                    </h4>
+                    <div className="mb-4 border-b border-border"></div>
+                    {/* tool list */}
+                    <div className="ml-4 flex flex-wrap justify-start gap-x-8 gap-y-8 text-3xl">
+                      {SkillsTools.tools.map((item, index) => {
+                        return (
+                          <div
+                            key={index}
+                            className="text-foreground transition-all hover:text-primary"
+                          >
                             {item}
                           </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-                {/* tools */}
-                <div>
-                  <h4 className="mb-2 text-xl font-semibold xl:text-left">
-                    Tools
-                  </h4>
-                  <div className="mb-4 border-b border-border"></div>
-                  {/* tool list */}
-                  <div className="flex flex-wrap justify-start gap-x-8 gap-y-8 text-3xl">
-                    {SkillsTools.tools.map((item, index) => {
-                      return (
-                        <div
-                          key={index}
-                          className="text-foreground transition-all hover:text-primary"
-                        >
-                          {item}
-                        </div>
-                      );
-                    })}
+                        );
+                      })}
+                    </div>
                   </div>
                 </div>
               </TabsContent>

@@ -29,7 +29,7 @@ export const metadata = {
     "Portfolio",
     "Resume",
     "Photography",
-    "Experince",
+    "Experience",
     "Projects",
     "About",
     "Contact",
