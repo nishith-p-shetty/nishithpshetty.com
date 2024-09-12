@@ -26,7 +26,7 @@ export default function Contact() {
             </p>
           </div>
           {/* Illustration */}
-          <div className="bg-contact_illustration_light dark:bg-contact_illustration_dark hidden w-full bg-contain bg-top bg-no-repeat xl:flex"></div>
+          <div className="hidden w-full bg-contact_illustration_light bg-contain bg-top bg-no-repeat dark:bg-contact_illustration_dark xl:flex"></div>
         </div>
         {/* info text & form */}
         <div className="mb-24 grid xl:mb-32 xl:grid-cols-2">
@@ -55,6 +55,7 @@ export default function Contact() {
           <ContactForm />
         </div>
       </div>
+      <div className="border-3 border-b border-dotted border-primary"></div>
     </section>
   );
 }
