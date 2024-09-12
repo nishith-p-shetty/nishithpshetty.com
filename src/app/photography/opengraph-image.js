@@ -1,8 +1,6 @@
 import { ImageResponse } from "next/og";
 import { metadata } from "./layout";
 
-// export const runtime = "edge";
-
 // Image metadata
 export const alt = metadata.title;
 export const size = {

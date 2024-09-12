@@ -18,9 +18,9 @@ export const ProjectCard = ({ project, type }) => {
             <Image
               className="absolute bottom-0 rounded-t-lg shadow-2xl"
               src={project.image}
-              width={450}
-              height={450}
-              //   fill={true}
+              // width={450}
+              // height={450}
+              fill={true}
               priority={true}
               alt={project.name + "thumbnail"}
             />
