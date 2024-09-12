@@ -176,7 +176,7 @@ export const About = () => {
                       {SkillsTools.skills.map((item, index) => {
                         return (
                           <div
-                            className="mx-auto flex items-center gap-x-4 xl:mx-0"
+                            className="flex items-center gap-x-4 xl:mx-0"
                             key={index}
                           >
                             <div className="flex items-center justify-center gap-x-3">
