@@ -1,5 +1,3 @@
-// "use client";
-
 // data
 import { IconsLinks } from "@/data/IconsLinks";
 
