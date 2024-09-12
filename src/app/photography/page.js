@@ -1,12 +1,8 @@
-"use client";
-
-import React, { useState, useRef, useEffect } from "react";
-
 // components
 import { LayoutGrid } from "@/components/ui/layout-grid";
 
 // data
-import { NumberOfPhotos, BasePhotographyURL, cards } from "@/data/Photography";
+import { cards } from "@/data/Photography";
 
 export default function Photography() {
   return (
