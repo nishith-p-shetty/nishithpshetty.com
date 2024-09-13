@@ -12,6 +12,11 @@ import { Achievements } from "@/data/Achievements";
 // components
 import { DevImage } from "@/components/DevImage";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card";
 
 export const About = () => {
   return (
@@ -109,9 +114,18 @@ export const About = () => {
                             <div className="absolute -left-[5px] h-[11px] w-[11px] rounded-full bg-primary transition-all duration-500 group-hover:translate-y-[84px]"></div>
                           </div>
                           <div>
-                            <div className="leading-none-mb-2 text-xl font-semibold">
-                              {item.company}
-                            </div>
+                            <HoverCard>
+                              <HoverCardTrigger>
+                                <div className="leading-none-mb-2 text-xl font-semibold">
+                                  {item.company}
+                                </div>
+                              </HoverCardTrigger>
+                              <HoverCardContent>
+                                {item.discription.map((desc, index) => {
+                                  return <div key={index}>{"• " + desc}</div>;
+                                })}
+                              </HoverCardContent>
+                            </HoverCard>
                             <div className="mb-4 text-lg leading-none text-muted-foreground">
                               {item.role}
                             </div>
