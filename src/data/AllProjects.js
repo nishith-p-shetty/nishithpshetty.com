@@ -67,6 +67,49 @@ export const AllProjects = [
     isLatest: false,
   },
   {
+    name: "Resturant Menu",
+    description: "A app to display items of resturant menu.",
+    image: "/project_thumbnail_photos/ResturantMenu.png",
+    category: ["Frontend"],
+    techStack: ["React", "JavaScript"],
+    link: "https://restaurant-menu-flax.vercel.app/",
+    github:
+      "https://github.com/nishith-p-shetty/react_project/tree/main/restaurant_menu",
+    isLatest: false,
+  },
+  {
+    name: "ToDo App",
+    description: "A app a record of checklist.",
+    image: "/project_thumbnail_photos/ToDoApp.png",
+    category: ["Frontend"],
+    techStack: ["React", "JavaScript"],
+    link: "https://todo-theta-puce.vercel.app/",
+    github: "https://github.com/nishith-p-shetty/react_project/tree/main/todo",
+    isLatest: false,
+  },
+  {
+    name: "Wearher App",
+    description: "A app to view weather report of different cities.",
+    image: "/project_thumbnail_photos/WearherApp.png",
+    category: ["Frontend"],
+    techStack: ["React", "JavaScript"],
+    link: "https://weather-app-beryl-theta.vercel.app/",
+    github:
+      "https://github.com/nishith-p-shetty/react_project/tree/main/weather_app",
+    isLatest: false,
+  },
+  {
+    name: "Counter App",
+    description: "A up down counter.",
+    image: "/project_thumbnail_photos/CounterApp.png",
+    category: ["Frontend"],
+    techStack: ["React", "JavaScript"],
+    link: null,
+    github:
+      "https://github.com/nishith-p-shetty/react_project/tree/main/counter",
+    isLatest: false,
+  },
+  {
     name: "Simple Calculator",
     description:
       "A web calculator which performs basic mathematical operations.",
