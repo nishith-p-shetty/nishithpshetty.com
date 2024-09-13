@@ -1,6 +1,6 @@
 export const WorkRoles = [
   "FullStack Developer",
-  "Backend Devoloper",
+  "Backend Developer",
   "Software Developer",
   "AIML Developer",
 ];
