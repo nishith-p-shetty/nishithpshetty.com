@@ -1,5 +1,5 @@
 // icons
-import { GraduationCap, Briefcase } from "lucide-react";
+import { GraduationCap, Briefcase, Trophy } from "lucide-react";
 import { FaDotCircle } from "react-icons/fa";
 
 // data
@@ -7,6 +7,7 @@ import { AboutMeBasicInfo } from "@/data/AboutMeBasicInfo";
 import { Education } from "@/data/Education";
 import { WorkExperience } from "@/data/WorkExperience";
 import { SkillsTools } from "@/data/SkillsTools";
+import { Achievements } from "@/data/Achievements";
 
 // components
 import { DevImage } from "@/components/DevImage";
@@ -31,7 +32,7 @@ export const About = () => {
           </div>
           {/* tabs */}
           <Tabs defaultValue="PersonalInformation" className="flex-1">
-            <TabsList className="grid w-full border-primary xl:max-w-[520px] xl:grid-cols-4 xl:border-2">
+            <TabsList className="grid w-full border-primary xl:max-w-[700px] xl:grid-cols-5 xl:border-2">
               <TabsTrigger
                 value="PersonalInformation"
                 className="w-[162px] xl:w-auto"
@@ -43,6 +44,9 @@ export const About = () => {
               </TabsTrigger>
               <TabsTrigger value="Education" className="w-[162px] xl:w-auto">
                 Education
+              </TabsTrigger>
+              <TabsTrigger value="Achievements" className="w-[162px] xl:w-auto">
+                Achievements
               </TabsTrigger>
               <TabsTrigger value="SkillsTools" className="w-[162px] xl:w-auto">
                 Skills & Tools
@@ -146,6 +150,48 @@ export const About = () => {
                             </div>
                             <div className="mb-4 text-lg leading-none text-muted-foreground">
                               {item.course}
+                            </div>
+                            <div className="text-base font-medium">
+                              {item.time}
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              </TabsContent>
+
+              {/* Achievements */}
+              <TabsContent
+                value="Achievements"
+                className="text-center xl:text-left"
+              >
+                <h3 className="mb-8 text-center text-3xl font-bold xl:text-left">
+                  My Achievements
+                </h3>
+                <div className="flex flex-col gap-y-6">
+                  <div className="flex items-center gap-x-4 text-[22px] text-primary">
+                    <Trophy />
+                    <h4 className="font-medium capitalize">Achievements</h4>
+                  </div>
+                  {/* Achievements list */}
+                  <div className="flex flex-col gap-y-8">
+                    {Achievements.map((item, index) => {
+                      return (
+                        <div className="group flex gap-x-8" key={index}>
+                          <div className="relative ml-2 h-[84px] w-[1px] bg-border">
+                            <div className="absolute -left-[5px] h-[11px] w-[11px] rounded-full bg-primary transition-all duration-500 group-hover:translate-y-[84px]"></div>
+                          </div>
+                          <div>
+                            <div className="leading-none-mb-2 text-xl font-semibold">
+                              {item.name}{" "}
+                              <span className="text-muted-foreground">
+                                [{item.type}]
+                              </span>
+                            </div>
+                            <div className="mb-4 text-lg leading-none text-muted-foreground">
+                              {item.position}, [{item.project}]
                             </div>
                             <div className="text-base font-medium">
                               {item.time}

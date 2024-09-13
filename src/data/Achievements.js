@@ -1,4 +1,4 @@
-export const Achivements = [
+export const Achievements = [
   {
     name: "HACK-A-LEAGUE 2.0",
     type: "Hackathon",
