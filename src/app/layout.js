@@ -22,7 +22,7 @@ export const viewport = {
 export const metadata = {
   metadataBase: new URL("https://www.nishithpshetty.com"),
   title: {
-    default: "Nishith P Shetty",
+    default: "Home - Nishith P Shetty",
     template: "%s - Nishith P Shetty",
   },
   description:
