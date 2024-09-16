@@ -55,6 +55,7 @@ const jsonLd = {
   name: " Nishith P Shetty",
   familyName: "Shetty",
   additionalName: "Shetty",
+  email: "nishithpshetty@nishithpshetty.com",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Bengaluru, Karnataka, India",
