@@ -47,6 +47,8 @@ export const Footer = () => {
         </Link>
         <Link
           className="m-1 p-1"
+          target="_blank"
+          prefetch={false}
           href="https://www.nishithpshetty.com/Resume.pdf"
         >
           Resume
