@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 // components
 import { Socials } from "./Socials";
 
@@ -17,6 +19,38 @@ export const Footer = () => {
             rights reserved.
           </div>
         </div>
+      </div>
+      <div className="gap-x-1 gap-y-1 bg-secondary text-center text-secondary">
+        <Link className="m-1 p-1" href="https://www.nishithpshetty.com/">
+          Home
+        </Link>
+        <Link
+          className="m-1 p-1"
+          href="https://www.nishithpshetty.com/#aboutme"
+        >
+          Amout Me
+        </Link>
+        <Link
+          className="m-1 p-1"
+          href="https://www.nishithpshetty.com/projects"
+        >
+          My Projects
+        </Link>
+        <Link
+          className="m-1 p-1"
+          href="https://www.nishithpshetty.com/photography"
+        >
+          Photography Gallery
+        </Link>
+        <Link className="m-1 p-1" href="https://www.nishithpshetty.com/contact">
+          Contact Me
+        </Link>
+        <Link
+          className="m-1 p-1"
+          href="https://www.nishithpshetty.com/Resume.pdf"
+        >
+          Resume
+        </Link>
       </div>
     </footer>
   );
