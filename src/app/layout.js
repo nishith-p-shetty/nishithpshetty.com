@@ -2,6 +2,7 @@ import { Outfit } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import Script from "next/script";
 
 // components
 import { Header } from "@/components/Header";
@@ -48,9 +49,42 @@ export const metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "http://schema.org",
+  "@type": "Person",
+  name: " Nishith P Shetty",
+  familyName: "Shetty",
+  additionalName: "Shetty",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Bengaluru, Karnataka, India",
+    addressRegion: "IN",
+  },
+  url: "https://www.nishithpshetty.com",
+  brand: "Nishith P Shetty",
+  image: "https://www.nishithpshetty.com/android-chrome-512x512.png",
+  sameAs: [
+    "https://twitter.com/NishithPShetty",
+    "https://www.facebook.com/nishith.p.shetty/",
+    "https://www.linkedin.com/in/nishith-p-shetty/",
+    "https://www.instagram.com/nishith.p.shetty/",
+    "https://github.com/nishith-p-shetty/",
+  ],
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <Script
+          id="schema"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd),
+          }}
+        />
+      </head>
       <body className={outfit.className}>
         <ThemeProvider attribute="class" defaultTheme="light">
           <Header />
