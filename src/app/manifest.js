@@ -5,8 +5,8 @@ export default function manifest() {
     description: "A personal/portfolio site of Nishith P Shetty",
     start_url: "/",
     display: "standalone",
-    background_color: "#ffffff",
-    theme_color: "#ffffff",
+    background_color: "#000",
+    theme_color: "#7936ec",
     icons: [
       {
         src: "/android-chrome-192x192.png",
