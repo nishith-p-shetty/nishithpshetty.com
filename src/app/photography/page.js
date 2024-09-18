@@ -1,5 +1,4 @@
-// components
-import { LayoutGrid } from "@/components/ui/layout-grid";
+import Image from "next/image";
 
 // data
 import { cards } from "@/data/Photography";
@@ -12,10 +11,20 @@ export default function Photography() {
           Gallery
         </h2>
       </div>
-      <div className="h-full w-full py-20">
-        <LayoutGrid cards={cards} />
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {cards.map((card, index) => {
+          return (
+            <Image
+              key={index}
+              src={card.thumbnail}
+              height={700}
+              width={700}
+              alt="image"
+            />
+          );
+        })}
       </div>
-      <div className="border-3 border-b border-dotted border-primary"></div>
+      <div className="border-3 mt-10 border-b border-dotted border-primary"></div>
     </section>
   );
 }
