@@ -1,8 +1,9 @@
 export default function manifest() {
   return {
-    name: "Nishith P Shetty Portfolio",
+    name: "Nishith P Shetty",
     short_name: "Nishith P Shetty",
-    description: "A personal/portfolio site of Nishith P Shetty",
+    description:
+      "Passionate AI/ML-driven Computer Science student with a knack for Full-Stack Development and a portfolio of impactful projects. Explore my journey through innovation and technology.",
     start_url: "/",
     display: "standalone",
     background_color: "#000",
