@@ -22,7 +22,7 @@ export const AllProjects = [
       "LangChain",
       "Chrome DB",
     ],
-    link: null,
+    link: "https://hackaleague.streamlit.app/",
     github: "https://github.com/nishith-p-shetty/HackALeague-2.0",
     isLatest: true,
   },
