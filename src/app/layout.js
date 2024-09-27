@@ -85,6 +85,11 @@ export default function RootLayout({ children }) {
             __html: JSON.stringify(jsonLd),
           }}
         />
+        <script
+          defer
+          src="https://cloud.umami.is/script.js"
+          data-website-id="a382ffec-dc40-4a0b-9586-f4aebdab7a03"
+        ></script>
       </head>
       <body className={outfit.className}>
         <ThemeProvider attribute="class" defaultTheme="light">
