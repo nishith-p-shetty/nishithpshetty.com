@@ -77,6 +77,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+        {/* Google Data Structure */}
         <Script
           id="schema"
           type="application/ld+json"
