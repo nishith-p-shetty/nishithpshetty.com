@@ -86,6 +86,7 @@ export default function RootLayout({ children }) {
             __html: JSON.stringify(jsonLd),
           }}
         />
+        {/* Umami Analytics */}
         <script
           defer
           src="https://cloud.umami.is/script.js"
