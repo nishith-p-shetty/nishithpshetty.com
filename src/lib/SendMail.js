@@ -10,9 +10,10 @@ export async function SendMail(data) {
     MY_ZOHO_LEAD_RECEIVER,
   } = process.env;
 
-  const recipientName = data.recipientName;
-  const recipientEmail = data.recipientEmail;
-  const recipientMessage = data.recipientMessage;
+  const recipientName = data.get("recipientName");
+  const recipientEmail = data.get("recipientEmail");
+  const recipientMessage = data.get("recipientMessage");
+
   const lead =
     "Name: " +
     recipientName +
@@ -21,15 +22,15 @@ export async function SendMail(data) {
     "\nMessage: " +
     recipientMessage;
 
-  //   const transporter = nodemailer.createTransport({
-  //     host: MY_ZOHO_SMTP_HOST,
-  //     port: MY_ZOHO_SMTP_PORT,
-  //     secure: true,
-  //     auth: {
-  //       user: MY_ZOHO_SMTP_USER,
-  //       pass: MY_ZOHO_SMTP_PASSWORD,
-  //     },
-  //   });
+  const transporter = nodemailer.createTransport({
+    host: MY_ZOHO_SMTP_HOST,
+    port: MY_ZOHO_SMTP_PORT,
+    secure: true,
+    auth: {
+      user: MY_ZOHO_SMTP_USER,
+      pass: MY_ZOHO_SMTP_PASSWORD,
+    },
+  });
 
   const textContent = `Thank You for Contacting\n
     Dear ${recipientName},
@@ -499,39 +500,40 @@ export async function SendMail(data) {
 	</body>
 </html>`;
 
-  //   try {
-  //     await transporter.verify();
-  //   } catch (error) {
-  //     console.log(error);
-  //     return "failed";
-  //   }
+  try {
+    await transporter.verify();
+  } catch (error) {
+    console.log(error);
+    return "failed";
+  }
 
-  //   const replyMail = {
-  //     from: MY_ZOHO_SMTP_USER,
-  //     to: recipientEmail,
-  //     subject: "Thank You for Reaching Out.",
-  //     text: textContent,
-  //     html: HTMLContent,
-  //   };
+  const replyMail = {
+    from: MY_ZOHO_SMTP_USER,
+    to: recipientEmail,
+    subject: "Thank You for Reaching Out.",
+    text: textContent,
+    html: HTMLContent,
+  };
 
-  //   const leadMail = {
-  //     from: MY_ZOHO_SMTP_USER,
-  //     to: MY_ZOHO_LEAD_RECEIVER,
-  //     subject: "New lead from portfolio.",
-  //     text: lead,
-  //   };
+  const leadMail = {
+    from: MY_ZOHO_SMTP_USER,
+    to: MY_ZOHO_LEAD_RECEIVER,
+    subject: "New lead from portfolio.",
+    text: lead,
+  };
 
-  //   try {
-  //     await transporter.sendMail(replyMail);
+  try {
+    const replyMailVar = transporter.sendMail(replyMail);
 
-  //     await transporter.sendMail(leadMail);
+    const leadMailVar = transporter.sendMail(leadMail);
 
-  //     // both mail sent
-  //     return "success";
-  //   } catch (error) {
-  //     // error in any mail
-  //     console.log(error);
-  //     return "failed";
-  //   }
-  return "success";
+    await Promise.all([replyMailVar, leadMailVar]);
+
+    // both mail sent
+    return "success";
+  } catch (error) {
+    // error in any mail
+    console.log(error);
+    return "failed";
+  }
 }

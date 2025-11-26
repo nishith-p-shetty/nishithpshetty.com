@@ -1,11 +1,9 @@
 "use client";
 
-// components
+import { useActionState } from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
-
-// icon
 import {
   User,
   MailIcon,
@@ -13,153 +11,104 @@ import {
   MessageSquare,
   Loader2,
 } from "lucide-react";
-
-// server action
-import { SendMail } from "./SendMail";
-
-// react hook form
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { useToast } from "@/hooks/use-toast";
-import { useState } from "react";
+import { submitContactForm } from "@/app/actions";
+import Turnstile from "react-turnstile";
 
 export const ContactForm = () => {
-  const [isSending, setIsSending] = useState(false);
-  const { toast } = useToast();
+  const [state, action, pending] = useActionState(submitContactForm, null);
 
-  //  form schema
-  const formSchema = z.object({
-    recipientName: z
-      .string()
-      .min(2, {
-        message: "Name must be at least 3 characters.",
-      })
-      .max(20, {
-        message: "Name must be less than 20 characters.",
-      }),
-    recipientEmail: z.string().email({ message: "Invalid email address" }),
-    recipientMessage: z
-      .string()
-      .min(5, {
-        message: "Message must be at least 5 characters.",
-      })
-      .max(200, {
-        message: "Message must be less than 200 characters.",
-      }),
-  });
-
-  // 1. Define your form.
-  const form = useForm({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      recipientName: "",
-      recipientEmail: "",
-      recipientMessage: "",
-    },
-  });
-
-  // 2. Define a submit handler.
-  async function onSubmit(data) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    setIsSending(true);
-    const response = await SendMail(data);
-    if (response === "success") {
-      toast({
-        description: "Your message has been sent.",
-      });
-      form.reset();
-    } else {
-      toast({
-        variant: "destructive",
-        title: "Uh oh! Something went wrong.",
-        description: "There was a problem with your request.",
-      });
-    }
-    setIsSending(false);
-  }
+  const isSuccess = state?.message === "success";
+  const isError = state?.message === "error";
 
   return (
-    <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="mt-6 flex flex-col gap-y-4"
-      >
-        <FormField
-          control={form.control}
-          name="recipientName"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="relative flex items-center">
-                <User size={20} className="mr-1" />
-                Full Name
-              </FormLabel>
-              <FormControl>
-                <Input placeholder="Enter your full name." {...field} />
-              </FormControl>
+    <>
+      {!isSuccess && (
+        <form action={action} className="flex flex-col gap-y-4">
+          {/* input */}
+          <div className="relative flex items-center">
+            <Input
+              type="text"
+              id="recipientName"
+              name="recipientName"
+              placeholder="Full Name"
+              required
+              autoComplete="name"
+              aria-label="Full Name"
+            />
+            <User size={20} className="absolute right-6" />
+          </div>
+          {/* input */}
+          <div className="relative flex items-center">
+            <Input
+              type="email"
+              id="recipientEmail"
+              name="recipientEmail"
+              placeholder="Email"
+              required
+              autoComplete="email"
+              aria-label="Email"
+            />
+            <MailIcon size={20} className="absolute right-6" />
+          </div>
+          {/* textarea */}
+          <div className="relative flex items-center">
+            <Textarea
+              placeholder="Type Your Message"
+              name="recipientMessage"
+              id="recipientMessage"
+              required
+              aria-label="Message"
+            />
+            <MessageSquare size={20} className="absolute right-6 top-4" />
+          </div>
 
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="recipientEmail"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="relative flex items-center">
-                <MailIcon size={20} className="mr-1" />
-                Email
-              </FormLabel>
-              <FormControl>
-                <Input placeholder="Enter your email." {...field} />
-              </FormControl>
+          <Turnstile
+            sitekey={
+              process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ||
+              "1x00000000000000000000AA"
+            }
+            responseField={true}
+            responseFieldName="turnstileToken"
+            fixedSize={true}
+            refreshExpired="auto"
+            theme="auto"
+          />
 
-              <FormMessage />
-            </FormItem>
+          {!pending && (
+            <Button
+              type="submit"
+              className="flex max-w-[166px] items-center gap-x-1"
+            >
+              Let&apos;s Connect
+              <ArrowRightIcon size={20} className="ml-2 animate-ping" />
+            </Button>
           )}
-        />
-        <FormField
-          control={form.control}
-          name="recipientMessage"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="relative flex items-center">
-                <MessageSquare size={20} className="mr-1" />
-                Message
-              </FormLabel>
-              <FormControl>
-                <Textarea placeholder="Enter your message." {...field} />
-              </FormControl>
-
-              <FormMessage />
-            </FormItem>
+          {pending && (
+            <Button
+              disabled
+              className="flex max-w-[166px] items-center gap-x-1"
+            >
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Sending...
+            </Button>
           )}
-        />
-        {isSending ? (
-          <Button disabled className="flex max-w-[166px] items-center gap-x-1">
-            <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-            Please wait
-          </Button>
-        ) : (
-          <Button
-            type="submit"
-            className="flex max-w-[166px] items-center gap-x-1"
-          >
-            Let&apos;s Connect
-            <ArrowRightIcon size={20} className="ml-2 animate-ping" />
-          </Button>
-        )}
-      </form>
-    </Form>
+        </form>
+      )}
+      {isSuccess && (
+        <p className="text-green-500 xl:text-center">
+          Message sent successfully! We will get back to you soon.
+        </p>
+      )}
+      {isError && (
+        <div className="text-center">
+          <p className="font-semibold text-red-500">
+            Failed to send the message.
+          </p>
+          {state?.error && (
+            <p className="mt-1 text-sm text-red-400">{state.error}</p>
+          )}
+        </div>
+      )}
+    </>
   );
 };
