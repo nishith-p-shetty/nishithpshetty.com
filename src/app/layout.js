@@ -75,7 +75,7 @@ const jsonLd = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         {/* Google Data Structure */}
         <Script
@@ -94,7 +94,11 @@ export default function RootLayout({ children }) {
         ></script>
       </head>
       <body className={outfit.className}>
-        <ThemeProvider attribute="class" defaultTheme="light">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          suppressHydrationWarning
+        >
           <Header />
           {children}
           <Analytics />
