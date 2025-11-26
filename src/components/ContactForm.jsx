@@ -63,10 +63,7 @@ export const ContactForm = () => {
           </div>
 
           <Turnstile
-            sitekey={
-              process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ||
-              "1x00000000000000000000AA"
-            }
+            sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
             responseField={true}
             responseFieldName="turnstileToken"
             fixedSize={true}
