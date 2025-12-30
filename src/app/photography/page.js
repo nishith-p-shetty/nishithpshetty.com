@@ -1,7 +1,6 @@
-import Image from "next/image";
-
 // data
 import { cards } from "@/data/Photography";
+import PhotoGallery from "@/components/PhotoGallery";
 
 export default function Photography() {
   return (
@@ -11,19 +10,7 @@ export default function Photography() {
           Gallery
         </h2>
       </div>
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {cards.map((card, index) => {
-          return (
-            <Image
-              key={index}
-              src={card.thumbnail}
-              height={700}
-              width={700}
-              alt="image"
-            />
-          );
-        })}
-      </div>
+      <PhotoGallery images={cards} />
       <div className="border-3 mt-10 border-b border-dotted border-primary"></div>
     </section>
   );
