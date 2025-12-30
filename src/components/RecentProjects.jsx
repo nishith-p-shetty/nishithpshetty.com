@@ -11,7 +11,8 @@ import { FaArrowCircleRight } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Pagination } from "swiper/modules";
+import "swiper/css/navigation";
+import { Pagination, Navigation } from "swiper/modules";
 
 // components
 import { Button } from "./ui/button";
@@ -23,10 +24,10 @@ export const RecentProjects = () => {
       <div className="container mx-auto">
         {/* heading caption */}
         <div className="mx-auto mb-12 flex max-w-[400px] flex-col items-center justify-center text-center xl:mx-0 xl:h-[400px] xl:items-start xl:text-left">
-          <h2 className="relative mb-4 flex w-max items-center justify-between gap-x-3 text-4xl font-bold before:h-[24px] before:w-[24px] before:bg-heading_dots_light before:bg-center before:bg-no-repeat dark:before:bg-heading_dots_dark">
+          <h2 className="before:bg-heading_dots_light dark:before:bg-heading_dots_dark relative mb-4 flex w-max items-center justify-between gap-x-3 text-4xl font-bold before:h-[24px] before:w-[24px] before:bg-center before:bg-no-repeat">
             Latest Projects
           </h2>
-          <p className="mb-8 text-lg font-light text-muted-foreground">
+          <p className="text-muted-foreground mb-8 text-lg font-light">
             Here are some of the projects I&apos;ve worked on recently.
           </p>
           <Link href="/projects">
@@ -36,7 +37,7 @@ export const RecentProjects = () => {
           </Link>
         </div>
         {/* slider */}
-        <div className="right-0 top-0 xl:absolute xl:max-w-[1000px]">
+        <div className="top-0 right-0 xl:absolute xl:max-w-[1000px]">
           <Swiper
             className="h-[480px]"
             slidesPerView={1}
@@ -46,8 +47,9 @@ export const RecentProjects = () => {
               },
             }}
             spaceBetween={30}
-            modules={[Pagination]}
+            modules={[Pagination, Navigation]}
             pagination={{ clickable: true }}
+            navigation={true}
           >
             {/* show only the recent projects for the slides */}
             {AllProjects.filter((project) => {
