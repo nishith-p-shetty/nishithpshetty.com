@@ -22,7 +22,7 @@ export const About = () => {
   return (
     <section className="bg-secondary p-8" id="aboutme">
       <div className="container mx-auto">
-        <h2 className="relative mx-auto mb-8 flex w-max items-center justify-between gap-x-3 pt-8 text-center text-5xl font-bold text-inherit before:h-[24px] before:w-[24px] before:bg-heading_dots_light before:bg-center before:bg-no-repeat before:dark:bg-heading_dots_dark xl:mb-16">
+        <h2 className="relative mx-auto mb-8 flex w-max items-center justify-between gap-x-3 pt-8 text-center text-5xl font-bold text-inherit before:h-[24px] before:w-[24px] before:bg-heading_dots_light before:bg-center before:bg-no-repeat dark:before:bg-heading_dots_dark xl:mb-16">
           About Me
         </h2>
         <div className="flex flex-col xl:flex-row">
@@ -110,7 +110,7 @@ export const About = () => {
                     {WorkExperience.map((item, index) => {
                       return (
                         <div className="group flex gap-x-8" key={index}>
-                          <div className="relative ml-2 h-[84px] w-[1px] bg-border">
+                          <div className="relative ml-2 h-[84px] w-px bg-border">
                             <div className="absolute -left-[5px] h-[11px] w-[11px] rounded-full bg-primary transition-all duration-500 group-hover:translate-y-[84px]"></div>
                           </div>
                           <div>
@@ -155,7 +155,7 @@ export const About = () => {
                     {Education.map((item, index) => {
                       return (
                         <div className="group flex gap-x-8" key={index}>
-                          <div className="relative ml-2 h-[84px] w-[1px] bg-border">
+                          <div className="relative ml-2 h-[84px] w-px bg-border">
                             <div className="absolute -left-[5px] h-[11px] w-[11px] rounded-full bg-primary transition-all duration-500 group-hover:translate-y-[84px]"></div>
                           </div>
                           <div>
@@ -194,7 +194,7 @@ export const About = () => {
                     {Achievements.map((item, index) => {
                       return (
                         <div className="group flex gap-x-8" key={index}>
-                          <div className="relative ml-2 h-[84px] w-[1px] bg-border">
+                          <div className="relative ml-2 h-[84px] w-px bg-border">
                             <div className="absolute -left-[5px] h-[11px] w-[11px] rounded-full bg-primary transition-all duration-500 group-hover:translate-y-[84px]"></div>
                           </div>
                           <div>
