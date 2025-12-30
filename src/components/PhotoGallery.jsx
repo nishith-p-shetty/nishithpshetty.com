@@ -150,14 +150,15 @@ export default function PhotoGallery({ images }) {
       <div className="masonry-grid">
         {sortedImages.map((image, index) => {
           const ratio = imageAspectRatios[image.thumbnail]?.ratio || 1;
-          const height = ratio > 1 ? 250 : 350;
+          const width = imageAspectRatios[image.thumbnail]?.width || 1000;
+          const height = imageAspectRatios[image.thumbnail]?.height || 1000;
 
           return (
             <div key={index} className="masonry-item">
               <div
                 className="group relative cursor-pointer overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:shadow-2xl"
                 style={{
-                  height: `${height}px`,
+                  aspectRatio: `${ratio}`,
                   width: "100%",
                 }}
                 onClick={() => setSelectedImage(image.thumbnail)}
@@ -165,9 +166,10 @@ export default function PhotoGallery({ images }) {
                 <Image
                   src={image.thumbnail}
                   alt={`Gallery image ${index + 1}`}
-                  fill
+                  width={width}
+                  height={height}
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
 
                 {/* Overlay on hover */}
