@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import Image from 'next/image';
+import { useState, useEffect } from "react";
+import Image from "next/image";
 
 export default function PhotoGallery({ images }) {
   const [imageAspectRatios, setImageAspectRatios] = useState({});
@@ -12,10 +12,12 @@ export default function PhotoGallery({ images }) {
   useEffect(() => {
     const loadImageDimensions = async () => {
       const ratios = {};
-      
+
       for (const image of images) {
         try {
-          const img = new (typeof window !== 'undefined' ? window.Image : Image)();
+          const img = new (
+            typeof window !== "undefined" ? window.Image : Image
+          )();
           await new Promise((resolve) => {
             img.onload = () => {
               const aspectRatio = img.naturalWidth / img.naturalHeight;
@@ -30,7 +32,7 @@ export default function PhotoGallery({ images }) {
             img.src = image.thumbnail;
           });
         } catch (error) {
-          console.error('Error loading image:', image.thumbnail, error);
+          console.error("Error loading image:", image.thumbnail, error);
         }
       }
 
@@ -48,11 +50,11 @@ export default function PhotoGallery({ images }) {
     const sorted = [...images].sort((a, b) => {
       const ratioA = imageAspectRatios[a.thumbnail]?.ratio || 1;
       const ratioB = imageAspectRatios[b.thumbnail]?.ratio || 1;
-      
+
       // Prioritize landscape images
       if (ratioA > 1.2 && ratioB <= 1.2) return -1;
       if (ratioA <= 1.2 && ratioB > 1.2) return 1;
-      
+
       // Then by aspect ratio (wider first)
       return ratioB - ratioA;
     });
@@ -63,38 +65,38 @@ export default function PhotoGallery({ images }) {
   // Calculate grid column span based on aspect ratio
   const getColSpan = (image) => {
     const ratio = imageAspectRatios[image.thumbnail]?.ratio || 1;
-    
+
     if (ratio > 1.5) {
-      return 'md:col-span-2'; // Wide landscape
+      return "md:col-span-2"; // Wide landscape
     }
     if (ratio > 1.2) {
-      return 'md:col-span-1'; // Moderate landscape
+      return "md:col-span-1"; // Moderate landscape
     }
-    return 'md:col-span-1'; // Square or portrait
+    return "md:col-span-1"; // Square or portrait
   };
 
   // Calculate grid row span based on aspect ratio
   const getRowSpan = (image) => {
     const ratio = imageAspectRatios[image.thumbnail]?.ratio || 1;
-    
+
     if (ratio < 0.7) {
-      return 'md:row-span-2'; // Tall portrait
+      return "md:row-span-2"; // Tall portrait
     }
-    return 'md:row-span-1';
+    return "md:row-span-1";
   };
 
   return (
     <>
       {/* Gallery Grid */}
-      <div className="grid auto-rows-[250px] grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4 lg:auto-rows-[280px]">
+      <div className="grid auto-rows-[250px] grid-cols-1 gap-4 md:grid-cols-3 lg:auto-rows-[280px] lg:grid-cols-4">
         {sortedImages.map((image, index) => {
           const ratio = imageAspectRatios[image.thumbnail]?.ratio || 1;
-          
+
           return (
             <div
               key={index}
               className={`group relative overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:shadow-2xl ${getColSpan(
-                image
+                image,
               )} ${getRowSpan(image)} cursor-pointer`}
               onClick={() => setSelectedImage(image.thumbnail)}
             >
@@ -105,12 +107,12 @@ export default function PhotoGallery({ images }) {
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 className="object-cover transition-transform duration-500 group-hover:scale-110"
               />
-              
+
               {/* Overlay on hover */}
-              <div className="absolute inset-0 bg-black/0 transition-all duration-300 group-hover:bg-black/30 flex items-center justify-center">
-                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-all duration-300 group-hover:bg-black/30">
+                <div className="opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                   <svg
-                    className="w-12 h-12 text-white"
+                    className="h-12 w-12 text-white"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -144,13 +146,13 @@ export default function PhotoGallery({ images }) {
               alt="Full size gallery image"
               width={1920}
               height={1080}
-              className="h-auto w-auto max-h-[85vh] max-w-[85vw] rounded-lg object-contain"
+              className="h-auto max-h-[85vh] w-auto max-w-[85vw] rounded-lg object-contain"
             />
-            
+
             {/* Close button */}
             <button
               onClick={() => setSelectedImage(null)}
-              className="absolute right-4 top-4 rounded-full bg-white/90 p-2 text-gray-900 transition-all hover:bg-white hover:scale-110"
+              className="absolute right-4 top-4 rounded-full bg-white/90 p-2 text-gray-900 transition-all hover:scale-110 hover:bg-white"
             >
               <svg
                 className="h-6 w-6"
@@ -172,13 +174,14 @@ export default function PhotoGallery({ images }) {
               onClick={(e) => {
                 e.stopPropagation();
                 const currentIndex = sortedImages.findIndex(
-                  (img) => img.thumbnail === selectedImage
+                  (img) => img.thumbnail === selectedImage,
                 );
                 const prevIndex =
-                  (currentIndex - 1 + sortedImages.length) % sortedImages.length;
+                  (currentIndex - 1 + sortedImages.length) %
+                  sortedImages.length;
                 setSelectedImage(sortedImages[prevIndex].thumbnail);
               }}
-              className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-white/90 p-2 text-gray-900 transition-all hover:bg-white hover:scale-110"
+              className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-white/90 p-2 text-gray-900 transition-all hover:scale-110 hover:bg-white"
             >
               <svg
                 className="h-6 w-6"
@@ -199,12 +202,12 @@ export default function PhotoGallery({ images }) {
               onClick={(e) => {
                 e.stopPropagation();
                 const currentIndex = sortedImages.findIndex(
-                  (img) => img.thumbnail === selectedImage
+                  (img) => img.thumbnail === selectedImage,
                 );
                 const nextIndex = (currentIndex + 1) % sortedImages.length;
                 setSelectedImage(sortedImages[nextIndex].thumbnail);
               }}
-              className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/90 p-2 text-gray-900 transition-all hover:bg-white hover:scale-110"
+              className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/90 p-2 text-gray-900 transition-all hover:scale-110 hover:bg-white"
             >
               <svg
                 className="h-6 w-6"
