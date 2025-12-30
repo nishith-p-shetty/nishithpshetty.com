@@ -62,6 +62,33 @@ export default function PhotoGallery({ images }) {
     setSortedImages(sorted);
   }, [imageAspectRatios, images]);
 
+  // Handle keyboard controls
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (!selectedImage) return;
+
+      const currentIndex = sortedImages.findIndex(
+        (img) => img.thumbnail === selectedImage,
+      );
+
+      if (e.key === "Escape") {
+        setSelectedImage(null);
+      } else if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        const prevIndex =
+          (currentIndex - 1 + sortedImages.length) % sortedImages.length;
+        setSelectedImage(sortedImages[prevIndex].thumbnail);
+      } else if (e.key === "ArrowRight") {
+        e.preventDefault();
+        const nextIndex = (currentIndex + 1) % sortedImages.length;
+        setSelectedImage(sortedImages[nextIndex].thumbnail);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [selectedImage, sortedImages]);
+
   // Calculate grid column span based on aspect ratio
   const getColSpan = (image) => {
     const ratio = imageAspectRatios[image.thumbnail]?.ratio || 1;
@@ -87,43 +114,79 @@ export default function PhotoGallery({ images }) {
 
   return (
     <>
-      {/* Gallery Grid */}
-      <div className="grid auto-rows-[250px] grid-cols-1 gap-4 md:grid-cols-3 lg:auto-rows-[280px] lg:grid-cols-4">
+      <style jsx>{`
+        .masonry-grid {
+          column-count: 1;
+          column-gap: 1rem;
+        }
+
+        @media (min-width: 768px) {
+          .masonry-grid {
+            column-count: 2;
+          }
+        }
+
+        @media (min-width: 1024px) {
+          .masonry-grid {
+            column-count: 3;
+          }
+        }
+
+        @media (min-width: 1280px) {
+          .masonry-grid {
+            column-count: 4;
+          }
+        }
+
+        .masonry-item {
+          break-inside: avoid;
+          margin-bottom: 1rem;
+          display: inline-block;
+          width: 100%;
+        }
+      `}</style>
+
+      {/* Masonry Gallery Grid */}
+      <div className="masonry-grid">
         {sortedImages.map((image, index) => {
           const ratio = imageAspectRatios[image.thumbnail]?.ratio || 1;
+          const height = ratio > 1 ? 250 : 350;
 
           return (
-            <div
-              key={index}
-              className={`group relative overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:shadow-2xl ${getColSpan(
-                image,
-              )} ${getRowSpan(image)} cursor-pointer`}
-              onClick={() => setSelectedImage(image.thumbnail)}
-            >
-              <Image
-                src={image.thumbnail}
-                alt={`Gallery image ${index + 1}`}
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="object-cover transition-transform duration-500 group-hover:scale-110"
-              />
+            <div key={index} className="masonry-item">
+              <div
+                className="group relative cursor-pointer overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:shadow-2xl"
+                style={{
+                  height: `${height}px`,
+                  width: "100%",
+                }}
+                onClick={() => setSelectedImage(image.thumbnail)}
+              >
+                <Image
+                  src={image.thumbnail}
+                  alt={`Gallery image ${index + 1}`}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                />
 
-              {/* Overlay on hover */}
-              <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-all duration-300 group-hover:bg-black/30">
-                <div className="opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                  <svg
-                    className="h-12 w-12 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"
-                    />
-                  </svg>
+                {/* Overlay on hover */}
+                <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-all duration-300 group-hover:bg-black/30">
+                  <div className="opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    <svg
+                      className="h-12 w-12 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"
+                      />
+                    </svg>
+                  </div>
                 </div>
               </div>
             </div>
