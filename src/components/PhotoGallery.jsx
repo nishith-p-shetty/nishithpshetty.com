@@ -1,51 +1,90 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 
 export default function PhotoGallery({ images }) {
   const [imageAspectRatios, setImageAspectRatios] = useState({});
   const [sortedImages, setSortedImages] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [loadingImages, setLoadingImages] = useState(new Set());
+  const imageLoadTimeoutRef = useRef(new Map());
 
-  // Get image dimensions and aspect ratios
+  // Initialize sortedImages immediately with default aspect ratios
+  useEffect(() => {
+    const defaultRatio = 1; // Default square aspect ratio
+    const initialAspectRatios = {};
+
+    images.forEach((image) => {
+      initialAspectRatios[image.thumbnail] = {
+        ratio: defaultRatio,
+        width: 1000,
+        height: 1000,
+      };
+    });
+
+    setImageAspectRatios(initialAspectRatios);
+    setSortedImages([...images]);
+  }, [images]);
+
+  // Load image dimensions progressively in the background
   useEffect(() => {
     const loadImageDimensions = async () => {
-      const ratios = {};
-
-      for (const image of images) {
-        try {
-          const img = new (
-            typeof window !== "undefined" ? window.Image : Image
-          )();
-          await new Promise((resolve) => {
-            img.onload = () => {
-              const aspectRatio = img.naturalWidth / img.naturalHeight;
-              ratios[image.thumbnail] = {
-                ratio: aspectRatio,
-                width: img.naturalWidth,
-                height: img.naturalHeight,
-              };
+      // Use a shorter timeout for each image to allow some to load in parallel
+      const imagePromises = images.map(
+        (image) =>
+          new Promise((resolve) => {
+            const timeout = setTimeout(() => {
+              // Fallback after timeout
               resolve();
-            };
-            img.onerror = resolve;
-            img.src = image.thumbnail;
-          });
-        } catch (error) {
-          console.error("Error loading image:", image.thumbnail, error);
-        }
-      }
+            }, 8000); // 8 second timeout per image
 
-      setImageAspectRatios(ratios);
+            try {
+              const img = new (
+                typeof window !== "undefined" ? window.Image : Image
+              )();
+
+              img.onload = () => {
+                clearTimeout(timeout);
+                const aspectRatio = img.naturalWidth / img.naturalHeight;
+                setImageAspectRatios((prev) => ({
+                  ...prev,
+                  [image.thumbnail]: {
+                    ratio: aspectRatio,
+                    width: img.naturalWidth,
+                    height: img.naturalHeight,
+                  },
+                }));
+                resolve();
+              };
+
+              img.onerror = () => {
+                clearTimeout(timeout);
+                resolve();
+              };
+
+              img.src = image.thumbnail;
+            } catch (error) {
+              clearTimeout(timeout);
+              console.error("Error loading image:", image.thumbnail, error);
+              resolve();
+            }
+          }),
+      );
+
+      // Don't wait for all images - process them in the background
+      Promise.all(imagePromises).catch(() => {});
     };
 
     loadImageDimensions();
+
+    return () => {
+      imageLoadTimeoutRef.current.forEach((timeout) => clearTimeout(timeout));
+    };
   }, [images]);
 
-  // Sort images for optimal masonry layout
+  // Sort images for optimal masonry layout - happens immediately
   useEffect(() => {
-    if (Object.keys(imageAspectRatios).length === 0) return;
-
     // Sort images: landscape first, then portrait, then square
     const sorted = [...images].sort((a, b) => {
       const ratioA = imageAspectRatios[a.thumbnail]?.ratio || 1;
@@ -144,56 +183,112 @@ export default function PhotoGallery({ images }) {
           display: inline-block;
           width: 100%;
         }
+
+        .skeleton {
+          background: linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.1) 25%,
+            rgba(255, 255, 255, 0.2) 50%,
+            rgba(255, 255, 255, 0.1) 75%
+          );
+          background-size: 200% 100%;
+          animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+          0% {
+            background-position: 200% 0;
+          }
+          100% {
+            background-position: -200% 0;
+          }
+        }
+
+        .image-loaded {
+          animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
       `}</style>
 
       {/* Masonry Gallery Grid */}
       <div className="masonry-grid">
-        {sortedImages.map((image, index) => {
-          const ratio = imageAspectRatios[image.thumbnail]?.ratio || 1;
-          const width = imageAspectRatios[image.thumbnail]?.width || 1000;
-          const height = imageAspectRatios[image.thumbnail]?.height || 1000;
-
-          return (
-            <div key={index} className="masonry-item">
-              <div
-                className="group relative cursor-pointer overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:shadow-2xl"
-                style={{
-                  aspectRatio: `${ratio}`,
-                  width: "100%",
-                }}
-                onClick={() => setSelectedImage(image.thumbnail)}
-              >
-                <Image
-                  src={image.thumbnail}
-                  alt={`Gallery image ${index + 1}`}
-                  width={width}
-                  height={height}
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+        {sortedImages.length === 0
+          ? // Skeleton loaders while initial images load
+            Array.from({ length: 8 }).map((_, index) => (
+              <div key={`skeleton-${index}`} className="masonry-item">
+                <div
+                  className="skeleton rounded-lg"
+                  style={{
+                    aspectRatio: index % 3 === 0 ? "1.5/1" : "1/1",
+                    width: "100%",
+                  }}
                 />
+              </div>
+            ))
+          : sortedImages.map((image, index) => {
+              const ratio = imageAspectRatios[image.thumbnail]?.ratio || 1;
+              const width = imageAspectRatios[image.thumbnail]?.width || 1000;
+              const height = imageAspectRatios[image.thumbnail]?.height || 1000;
+              const isLoading = loadingImages.has(image.thumbnail);
 
-                {/* Overlay on hover */}
-                <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-all duration-300 group-hover:bg-black/30">
-                  <div className="opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                    <svg
-                      className="h-12 w-12 text-white"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"
-                      />
-                    </svg>
+              return (
+                <div key={index} className="masonry-item">
+                  <div
+                    className={`group relative cursor-pointer overflow-hidden rounded-lg shadow-lg transition-all duration-300 hover:shadow-2xl ${
+                      isLoading ? "skeleton" : ""
+                    }`}
+                    style={{
+                      aspectRatio: `${ratio}`,
+                      width: "100%",
+                    }}
+                    onClick={() => setSelectedImage(image.thumbnail)}
+                  >
+                    <Image
+                      src={image.thumbnail}
+                      alt={`Gallery image ${index + 1}`}
+                      width={width}
+                      height={height}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+                      className="image-loaded h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      onLoadingComplete={() => {
+                        setLoadingImages((prev) => {
+                          const newSet = new Set(prev);
+                          newSet.delete(image.thumbnail);
+                          return newSet;
+                        });
+                      }}
+                    />
+
+                    {/* Overlay on hover */}
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-all duration-300 group-hover:bg-black/30">
+                      <div className="opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                        <svg
+                          className="h-12 w-12 text-white"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"
+                          />
+                        </svg>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          );
-        })}
+              );
+            })}
       </div>
 
       {/* Lightbox Modal */}
@@ -217,7 +312,7 @@ export default function PhotoGallery({ images }) {
             {/* Close button */}
             <button
               onClick={() => setSelectedImage(null)}
-              className="absolute right-4 top-4 rounded-full bg-white/90 p-2 text-gray-900 transition-all hover:scale-110 hover:bg-white"
+              className="absolute top-4 right-4 rounded-full bg-white/90 p-2 text-gray-900 transition-all hover:scale-110 hover:bg-white"
             >
               <svg
                 className="h-6 w-6"
@@ -246,7 +341,7 @@ export default function PhotoGallery({ images }) {
                   sortedImages.length;
                 setSelectedImage(sortedImages[prevIndex].thumbnail);
               }}
-              className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-white/90 p-2 text-gray-900 transition-all hover:scale-110 hover:bg-white"
+              className="absolute top-1/2 left-4 -translate-y-1/2 rounded-full bg-white/90 p-2 text-gray-900 transition-all hover:scale-110 hover:bg-white"
             >
               <svg
                 className="h-6 w-6"
@@ -272,7 +367,7 @@ export default function PhotoGallery({ images }) {
                 const nextIndex = (currentIndex + 1) % sortedImages.length;
                 setSelectedImage(sortedImages[nextIndex].thumbnail);
               }}
-              className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/90 p-2 text-gray-900 transition-all hover:scale-110 hover:bg-white"
+              className="absolute top-1/2 right-4 -translate-y-1/2 rounded-full bg-white/90 p-2 text-gray-900 transition-all hover:scale-110 hover:bg-white"
             >
               <svg
                 className="h-6 w-6"
