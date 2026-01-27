@@ -71,4 +71,7 @@ export const cards = [
   {
     thumbnail: BasePhotographyURL + "23.jpg",
   },
+  {
+    thumbnail: BasePhotographyURL + "24.jpg",
+  },
 ];
