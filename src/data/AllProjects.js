@@ -38,7 +38,7 @@ export const AllProjects = [
   },
   {
     name: "Visitor Counter",
-    description: "A app to keep track of number of visits.",
+    description: "An app to keep track of the number of visits.",
     image: "/project_thumbnail_photos/VisitorCounter.png",
     category: ["Backend"],
     techStack: ["CloudFlare Workers", "Key-Value Store", "JavaScript"],
@@ -68,7 +68,7 @@ export const AllProjects = [
   },
   {
     name: "Restaurant Menu",
-    description: "A app to display items of restaurant menu.",
+    description: "An app to display items of a restaurant menu.",
     image: "/project_thumbnail_photos/RestaurantMenu.png",
     category: ["Frontend"],
     techStack: ["React", "JavaScript"],
@@ -79,7 +79,7 @@ export const AllProjects = [
   },
   {
     name: "ToDo App",
-    description: "A app a record of checklist.",
+    description: "An app to maintain a record of checklists.",
     image: "/project_thumbnail_photos/ToDoApp.png",
     category: ["Frontend"],
     techStack: ["React", "JavaScript"],
@@ -89,7 +89,7 @@ export const AllProjects = [
   },
   {
     name: "Weather App",
-    description: "A app to view weather report of different cities.",
+    description: "An app to view weather reports of different cities.",
     image: "/project_thumbnail_photos/WeatherApp.png",
     category: ["Frontend"],
     techStack: ["React", "JavaScript"],
@@ -100,7 +100,7 @@ export const AllProjects = [
   },
   {
     name: "Counter App",
-    description: "A up down counter.",
+    description: "An up-down counter.",
     image: "/project_thumbnail_photos/CounterApp.png",
     category: ["Frontend"],
     techStack: ["React", "JavaScript"],
@@ -122,7 +122,7 @@ export const AllProjects = [
   },
   {
     name: "Idhika",
-    description: "A webpage for a spice buisness.",
+    description: "A webpage for a spice business.",
     image: "/project_thumbnail_photos/Idhika.png",
     category: ["Frontend"],
     techStack: ["HTML", "CSS", "Bootstrap"],
@@ -141,8 +141,8 @@ export const AllProjects = [
     isLatest: false,
   },
   {
-    name: "Tick Tac Toe",
-    description: "Digital Version of Tick-Tac-Toe.",
+    name: "Tic Tac Toe",
+    description: "Digital Version of Tic-Tac-Toe.",
     image: "/project_thumbnail_photos/TickTacToe.png",
     category: ["Console"],
     techStack: ["Python"],

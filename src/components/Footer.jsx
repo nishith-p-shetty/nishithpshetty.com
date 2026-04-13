@@ -28,7 +28,7 @@ export const Footer = () => {
           className="m-1 p-1"
           href="https://www.nishithpshetty.com/#aboutme"
         >
-          Amout Me
+          About Me
         </Link>
         <Link
           className="m-1 p-1"

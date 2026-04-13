@@ -2,7 +2,7 @@ export const WorkExperience = [
   {
     company: "LiaPlus AI (formerly WritePlus AI) Private Limited",
     role: "Full Stack Development Intern",
-    discription: [
+    description: [
       "Developed automated email function for seamless delivery of generated reports to end users.",
       "Proficiently worked with DynamoDB, ensuring efficient and scalable data management.",
       "Contributed to the development of dynamic web applications using Flask and Next.js.",
@@ -27,7 +27,7 @@ export const WorkExperience = [
   {
     company: "Open Source Contributions",
     role: "Contributor",
-    discription: ["Open Source Projects related to web development."],
+    description: ["Open Source Projects related to web development."],
     techStack: ["Python", "JavaScript", "SVG", "HTML", "CSS"],
     time: "Oct 2021 – Present ",
     location: "Remote",

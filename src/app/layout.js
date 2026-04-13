@@ -8,7 +8,7 @@ import Script from "next/script";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 
-// toast comonent
+// toast component
 import { Toaster } from "@/components/ui/toaster";
 
 // theme

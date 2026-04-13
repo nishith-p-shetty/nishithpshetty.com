@@ -12,7 +12,7 @@ import { DevRoles } from "./DevRoles";
 import { HeroImage } from "./HeroImage";
 import { MobileFloatingBadge } from "./MobileFloatingBadges";
 
-export const Hero = ({ discription }) => {
+export const Hero = ({ description }) => {
   return (
     <section className="bg-secondary py-8 xl:h-screen xl:py-28">
       <div className="container mx-auto">
@@ -28,7 +28,7 @@ export const Hero = ({ discription }) => {
               aka Nishith P Shetty
             </h1>
             <p className="mx-auto mb-8 mt-2 w-full text-justify text-lg font-light text-muted-foreground xl:mx-0">
-              {discription}
+              {description}
             </p>
             {/* buttons */}
             <div className="mx-auto mb-8 flex flex-col gap-x-3 gap-y-3 md:flex-row">

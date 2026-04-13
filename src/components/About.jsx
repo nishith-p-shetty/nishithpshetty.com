@@ -87,7 +87,7 @@ export const About = () => {
                     );
                   })}
                 </div>
-                {/* languagues */}
+                {/* languages */}
                 <div className="flex flex-col gap-y-2">
                   <div className="text-primary">Language Skill</div>
                   <div className="border-b border-border"></div>
@@ -121,7 +121,7 @@ export const About = () => {
                                 </div>
                               </HoverCardTrigger>
                               <HoverCardContent>
-                                {item.discription.map((desc, index) => {
+                                {item.description.map((desc, index) => {
                                   return <div key={index}>{"• " + desc}</div>;
                                 })}
                               </HoverCardContent>
