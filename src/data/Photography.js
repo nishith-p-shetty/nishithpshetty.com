@@ -1,4 +1,4 @@
-export const NumberOfPhotos = 13;
+export const NumberOfPhotos = 17;
 export const BasePhotographyURL = "/photography_photos/";
 
 export const cards = [
@@ -85,5 +85,17 @@ export const cards = [
   },
   {
     thumbnail: BasePhotographyURL + "28.jpg",
+  },
+  {
+    thumbnail: BasePhotographyURL + "29.jpg",
+  },
+  {
+    thumbnail: BasePhotographyURL + "30.jpg",
+  },
+  {
+    thumbnail: BasePhotographyURL + "31.jpg",
+  },
+  {
+    thumbnail: BasePhotographyURL + "32.jpg",
   },
 ];
