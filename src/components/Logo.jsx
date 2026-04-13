@@ -12,6 +12,7 @@ export const Logo = ({ onLinkClick }) => {
             height={54}
             priority={true}
             alt="Logo"
+            style={{ width: "auto", height: "auto" }}
           />
         </div>
         <div className="dark:hidden">
@@ -21,6 +22,7 @@ export const Logo = ({ onLinkClick }) => {
             height={54}
             priority={true}
             alt="Logo"
+            style={{ width: "auto", height: "auto" }}
           />
         </div>
       </Link>

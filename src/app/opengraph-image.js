@@ -50,8 +50,8 @@ export default async function Image() {
                 padding: "0",
               }}
               src="https://www.nishithpshetty.com/android-chrome-512x512.png"
-              width="350"
-              height="350"
+              width={350}
+              height={350}
               alt="Logo"
             />
           </div>

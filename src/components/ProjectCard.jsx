@@ -36,6 +36,7 @@ export const ProjectCard = ({ project, type }) => {
               // height={450}
               fill={true}
               priority={true}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               alt={project.name + "thumbnail"}
             />
             {/* btn links */}
@@ -44,9 +45,9 @@ export const ProjectCard = ({ project, type }) => {
                 <Link
                   href={project.link}
                   target="_blank"
-                  className="flex h-[54px] w-[54px] scale-0 items-center justify-center rounded-full bg-foreground opacity-0 transition-all duration-200 group-hover:scale-100 group-hover:opacity-100"
+                  className="flex h-[54px] w-[54px] scale-0 items-center justify-center rounded-full bg-primary opacity-0 transition-all duration-200 group-hover:scale-100 group-hover:opacity-100"
                 >
-                  <Link2Icon className="text-primary" />
+                  <Link2Icon className="text-primary-foreground" />
                 </Link>
               ) : (
                 ""
@@ -54,9 +55,9 @@ export const ProjectCard = ({ project, type }) => {
               <Link
                 href={project.github}
                 target="_blank"
-                className="flex h-[54px] w-[54px] scale-0 items-center justify-center rounded-full bg-foreground opacity-0 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100"
+                className="flex h-[54px] w-[54px] scale-0 items-center justify-center rounded-full bg-primary opacity-0 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100"
               >
-                <GithubIcon className="text-primary" />
+                <GithubIcon className="text-primary-foreground" />
               </Link>
             </div>
           </div>

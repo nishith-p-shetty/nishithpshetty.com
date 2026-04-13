@@ -258,12 +258,14 @@ export default function PhotoGallery({ images }) {
                       height={height}
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
                       className="image-loaded h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                      onLoadingComplete={() => {
-                        setLoadingImages((prev) => {
-                          const newSet = new Set(prev);
-                          newSet.delete(image.thumbnail);
-                          return newSet;
-                        });
+                      onLoad={(e) => {
+                        if (e.target.complete) {
+                          setLoadingImages((prev) => {
+                            const newSet = new Set(prev);
+                            newSet.delete(image.thumbnail);
+                            return newSet;
+                          });
+                        }
                       }}
                     />
 
