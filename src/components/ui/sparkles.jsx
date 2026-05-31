@@ -1,9 +1,13 @@
 import React, { useId } from "react";
 import { useEffect, useState } from "react";
-import Particles, { initParticlesEngine } from "@tsparticles/react";
+import Particles, { ParticlesProvider } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import { cn } from "@/lib/utils";
 import { motion, useAnimation } from "framer-motion";
+
+const initParticles = async (engine) => {
+  await loadSlim(engine);
+};
 
 export const SparklesCore = (props) => {
   const {
@@ -16,14 +20,6 @@ export const SparklesCore = (props) => {
     particleColor,
     particleDensity,
   } = props;
-  const [init, setInit] = useState(false);
-  useEffect(() => {
-    initParticlesEngine(async (engine) => {
-      await loadSlim(engine);
-    }).then(() => {
-      setInit(true);
-    });
-  }, []);
   const controls = useAnimation();
 
   const particlesLoaded = async (container) => {
@@ -40,7 +36,7 @@ export const SparklesCore = (props) => {
   const generatedId = useId();
   return (
     <motion.div animate={controls} className={cn("opacity-0", className)}>
-      {init && (
+      <ParticlesProvider init={initParticles}>
         <Particles
           id={id || generatedId}
           className={cn("h-full w-full")}
@@ -415,7 +411,7 @@ export const SparklesCore = (props) => {
             detectRetina: true,
           }}
         />
-      )}
+      </ParticlesProvider>
     </motion.div>
   );
 };
