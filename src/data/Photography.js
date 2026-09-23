@@ -1,4 +1,4 @@
-export const NumberOfPhotos = 38;
+export const NumberOfPhotos = 60;
 export const BasePhotographyURL = "/photography_photos/";
 
 export const cards = [
@@ -115,5 +115,71 @@ export const cards = [
   },
   {
     thumbnail: BasePhotographyURL + "38.jpg",
+  },
+  {
+    thumbnail: BasePhotographyURL + "39.jpg",
+  },
+  {
+    thumbnail: BasePhotographyURL + "40.jpg",
+  },
+  {
+    thumbnail: BasePhotographyURL + "41.jpg",
+  },
+  {
+    thumbnail: BasePhotographyURL + "42.jpg",
+  },
+  {
+    thumbnail: BasePhotographyURL + "43.jpg",
+  },
+  {
+    thumbnail: BasePhotographyURL + "44.jpg",
+  },
+  {
+    thumbnail: BasePhotographyURL + "45.jpg",
+  },
+  {
+    thumbnail: BasePhotographyURL + "46.jpg",
+  },
+  {
+    thumbnail: BasePhotographyURL + "47.jpg",
+  },
+  {
+    thumbnail: BasePhotographyURL + "48.jpg",
+  },
+  {
+    thumbnail: BasePhotographyURL + "49.jpg",
+  },
+  {
+    thumbnail: BasePhotographyURL + "50.jpg",
+  },
+  {
+    thumbnail: BasePhotographyURL + "51.jpg",
+  },
+  {
+    thumbnail: BasePhotographyURL + "52.jpg",
+  },
+  {
+    thumbnail: BasePhotographyURL + "53.jpg",
+  },
+  {
+    thumbnail: BasePhotographyURL + "54.jpg",
+  },
+  {
+    thumbnail: BasePhotographyURL + "55.jpg",
+  },
+  {
+    thumbnail: BasePhotographyURL + "56.jpg",
+  },
+  {
+    thumbnail: BasePhotographyURL + "57.jpg",
+  },
+  {
+    thumbnail: BasePhotographyURL + "58.jpg",
+  },
+  {
+    thumbnail: BasePhotographyURL + "59.jpg",
+  },
+  {
+    thumbnail: BasePhotographyURL + "60.jpg",
   },
 ];
